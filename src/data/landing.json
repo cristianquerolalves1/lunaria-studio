@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "title": "Lunaria Studio — Diseños Cartoon Digital Personalizados",
+    "description": "Portadas de canciones, dibujos de pareja, logos para streamers y youtubers. Estilo cartoon 2D vibrante. Desde $15 con envío físico premium.",
+    "lang": "es",
+    "charset": "UTF-8",
+    "ldJson": {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "Lunaria Studio",
+      "description": "Estudio de diseño gráfico especializado en ilustraciones cartoon 2D económicas y personalizadas. Perfecto para creadores, streamers y marcas pequeñas.",
+      "url": "https://lunariastudio.com",
+      "logo": "./public/favicon.svg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "holalunariastudio@proton.me",
+        "contactType": "Atención al Cliente"
+      },
+      "sameAs": [
+        "https://instagram.com/lunariastudio",
+        "https://tiktok.com/@lunariastudio",
+        "https://youtube.com/@lunariastudio"
+      ]
+    }
+  },
+
+  "headerData": {
+    "logo": "Lunaria Studio",
+    "links": [
+      { "label": "Inicio", "href": "#hero-section" },
+      { "label": "Servicios", "href": "#services-section" },
+      { "label": "Por qué elegirnos", "href": "#adventajes-section" },
+      { "label": "Planes / Precios", "href": "#plans-section" },
+      { "label": "Contacto", "href": "mailto:holalunariastudio@proton.me" }
+    ]
+  },
+
+  "heroData": {
+    "title": "Diseños Cartoon que Enamoran:",
+    "subTitle": "Portadas, logos, dibujos de pareja y más — todo en estilo cartoon digital vibrante, accesible y con opción de envío físico.",
+    "primaryCta": "Ver Planes",
+    "secondaryCta": "Portfolio",
+    "highlightedTitle": "Lunaria Studio"
+  },
+
+  "servicesData": {
+    "title": "Diseños Cartoon 2D para Creadores y Marcas",
+    "services": [
+      {
+        "title": "Portadas de Canciones",
+        "icon": "DevIcon",
+        "description": "Diseño profesional para Spotify, YouTube o SoundCloud. Estilo cartoon vibrante, con tu título y colores personalizados."
+      },
+      {
+        "title": "Dibujos de Pareja / Personajes",
+        "icon": "PlanetIcon",
+        "description": "Ilustraciones adorables de parejas, amigos o personajes originales. Perfecto para regalos o redes sociales."
+      },
+      {
+        "title": "Logos para Streamers & Youtubers",
+        "icon": "FileIcon",
+        "description": "Logo único con tu nombre, colores y estilo cartoon. Ideal para Twitch, YouTube, TikTok y más."
+      },
+      {
+        "title": "Dibujos Personalizados",
+        "icon": "ConfigIcon",
+        "description": "Cualquier idea que tengas: mascotas, fanart, escenas, conceptos... ¡Lo hacemos realidad en cartoon digital!"
+      }
+    ]
+  },
+
+  "adventajesData": {
+    "title": "Por qué elegir Lunaria Studio",
+    "adventajas": [
+      {
+        "title": "Diseños Profesionales y Económicos",
+        "description": "Calidad premium a precios accesibles. Ideal para creadores independientes y marcas pequeñas que buscan destacar.",
+        "img": "template.webp",
+        "imageAlt": "Ejemplo de diseño cartoon económico y profesional",
+        "checks": ["Entrega en 48h", "Archivos PNG + JPG", "Uso comercial"]
+      },
+      {
+        "title": "Envío Físico con Tarjeta Personalizada",
+        "description": "Desde el plan Signature, recibe tu diseño impreso en alta calidad + tarjeta personalizada con dedicatoria. ¡Un regalo inolvidable!",
+        "img": "seo.webp",
+        "imageAlt": "Diseño impreso con tarjeta personalizada",
+        "checks": ["Impresión premium", "Tarjeta con dedicatoria", "Envío a todo el mundo"]
+      }
+    ]
+  },
+
+  "brandsData": {
+    "title": "Listo para tus Plataformas Favoritas",
+    "description": "Tus diseños optimizados para redes sociales, streaming, música y más. Fácil de usar en cualquier lugar.",
+    "brands": [
+      { "label": "Instagram", "icon": "InstagramIcon", "href": "https://instagram.com" },
+      { "label": "Twitch", "icon": "FacebookIcon", "href": "https://twitch.tv" },
+      { "label": "Twitter", "icon": "TwitterIcon", "href": "https://x.com" },
+      { "label": "Youtube", "icon": "NetlifyIcon", "href": "https://youtube.com" },
+	  { "label": "Discord", "icon": "ReactIcon", "href": "https://instagram.com" },
+	  { "label": "Tiktok", "icon": "SolidIcon", "href": "https://tiktok.com" }
+    ]
+  },
+
+  "pricingData": {
+    "title": "Nuestros Planes",
+  "tiers": [
+    {
+      "title": "Essential",
+      "description": "Diseño rápido y profesional en 48h.",
+      "price": { "amount": "$15" },
+      "features": [
+        "Hasta 2 personas",
+        "1 revisión",
+        "PNG + JPG (1080p)",
+        "Entrega en 48h",
+        "Licencia comercial"
+      ],
+      "cta": "Elegir Essential",
+      "href": "https://wa.link/g5nu3l"
+    },
+    {
+      "title": "Signature",
+      "description": "Diseño premium + envío físico de lujo.",
+      "price": { "amount": "$35" },
+      "features": [
+        "Hasta 2 personas detalladas",
+        "3 revisiones",
+        "PNG + SVG + PSD",
+        "Impresión A5 premium",
+        "Envío certificado"
+      ],
+      "cta": "Más Popular",
+      "href": "https://wa.link/g5nu3l"
+    },
+    {
+      "title": "Bespoke",
+      "description": "Diseño 100% a medida, sin límites.",
+      "price": { "amount": "A consultar" },
+      "features": [
+        "Propuesta en 24h",
+        "Personajes ilimitados",
+        "Revisiones ilimitadas",
+        "Estilos avanzados",
+        "Soporte directo"
+      ],
+      "cta": "Solicitar Bespoke",
+      "href": "https://calendly.com/lunaria-studio/30min"
+    }
+  ]
+},
+
+  "footerData": {
+    "logo": "Lunaria Studio",
+    "description": "Diseños cartoon digitales con amor y estilo. Económicos, rápidos y con opción de envío físico premium.",
+    "links": [
+
+      { "label": "Contacto", "href": "mailto:holalunariastudio@proton.me" }
+    ],
+    "socials": [
+    
+    ]
+  }
+}
