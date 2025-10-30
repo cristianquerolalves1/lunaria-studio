@@ -1,20 +1,38 @@
-<div
-  id="cursor"
-  class="fixed top-0 left-0 w-5 h-5 rounded-full bg-primary opacity-70 pointer-events-none mix-blend-difference z-[9999] transition-transform duration-150 ease-out"
-></div>
+---
+---
 
+<!-- Cursor: solo se añadirá dinámicamente si estamos en escritorio -->
 <script is:inline>
-  const cursor = document.getElementById("cursor");
+  // Esperar a que el DOM esté listo
+  document.addEventListener("DOMContentLoaded", () => {
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
-  document.addEventListener("mousemove", (e) => {
-    cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
-  });
+    // Si no es escritorio → no hacemos nada
+    if (!isDesktop) return;
 
-  document.addEventListener("mousedown", () => {
-    cursor.style.transform += " scale(0.7)";
-  });
+    // Crear el cursor dinámicamente
+    const cursor = document.createElement("div");
+    cursor.id = "custom-cursor";
+    cursor.className =
+      "fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] bg-primary opacity-70 mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-150 ease-out";
+    document.body.appendChild(cursor);
 
-  document.addEventListener("mouseup", () => {
-    cursor.style.transform = cursor.style.transform.replace(" scale(0.7)", "");
+    // Movimiento del cursor
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+
+    // Efecto hover sobre links y botones
+    const hoverTargets = document.querySelectorAll("a, button");
+    hoverTargets.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        cursor.style.scale = "1.8";
+        cursor.style.opacity = "0.5";
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.style.scale = "1";
+        cursor.style.opacity = "0.7";
+      });
+    });
   });
 </script>
