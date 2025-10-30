@@ -1,14 +1,20 @@
 ---
 import type { Icon } from "@/config/landing.interface";
+
+// commons
 import CheckIcon from "@/icons/commons/CheckIcon.astro";
 import ConfigIcon from "@/icons/commons/ConfigIcon.astro";
 import DevIcon from "@/icons/commons/DevIcon.astro";
 import FileIcon from "@/icons/commons/FileIcon.astro";
 import PlanetIcon from "@/icons/commons/PlanetIcon.astro";
+
+// socials
 import FacebookIcon from "@/icons/socials/FacebookIcon.astro";
 import GithubIcon from "@/icons/socials/GithubIcon.astro";
 import InstagramIcon from "@/icons/socials/InstagramIcon.astro";
 import TwitterIcon from "@/icons/socials/TwitterIcon.astro";
+
+// techs
 import NetlifyIcon from "@/icons/techs/NetlifyIcon.astro";
 import ReactIcon from "@/icons/techs/ReactIcon.astro";
 import SolidIcon from "@/icons/techs/SolidIcon.astro";
@@ -41,11 +47,10 @@ const icons = [
   VercelIcon,
 ];
 
-let figures: Record<string, (_props: Record<string, unknown>) => unknown> = {};
-
-icons.map((item) => {
-  figures[item.name] = item;
-});
+// crear mapa de componentes por nombre
+const figures: Record<string, any> = Object.fromEntries(
+  icons.map((component) => [component.name, component])
+);
 
 const Figure = figures[icon];
 ---
