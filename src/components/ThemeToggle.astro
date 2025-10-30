@@ -1,18 +1,40 @@
 <button
   id="theme-toggle"
   aria-label="Cambiar tema"
-  class="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 flex items-center justify-center overflow-hidden transition-colors duration-300"
+  class="
+    relative
+    w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14
+    rounded-full
+    bg-gray-200 dark:bg-gray-800
+    border border-gray-300 dark:border-gray-600
+    flex items-center justify-center
+    overflow-hidden
+    transition-colors duration-300
+  "
 >
   <!-- Sol -->
   <span
     id="theme-sun"
-    class="absolute w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 bg-yellow-400 rounded-full transition-all duration-500"
+    class="
+      absolute
+      w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8
+      bg-yellow-400
+      rounded-full
+      transition-all duration-500
+    "
   ></span>
 
   <!-- Luna -->
   <span
     id="theme-moon"
-    class="absolute w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 bg-gray-900 rounded-full transition-all duration-500 opacity-0"
+    class="
+      absolute
+      w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8
+      bg-gray-900
+      rounded-full
+      transition-all duration-500
+      opacity-0
+    "
   ></span>
 </button>
 
@@ -22,22 +44,16 @@
   const sun = document.getElementById("theme-sun");
   const moon = document.getElementById("theme-moon");
 
+  // Actualizar estado visual del toggle
   function updateToggle(isDark) {
-    if (isDark) {
-      sun.style.opacity = "0";
-      moon.style.opacity = "1";
-      moon.style.transform = "scale(1)";
-      sun.style.transform = "scale(0)";
-    } else {
-      sun.style.opacity = "1";
-      moon.style.opacity = "0";
-      sun.style.transform = "scale(1)";
-      moon.style.transform = "scale(0)";
-    }
+    sun.style.opacity = isDark ? "0" : "1";
+    moon.style.opacity = isDark ? "1" : "0";
+    sun.style.transform = isDark ? "scale(0)" : "scale(1)";
+    moon.style.transform = isDark ? "scale(1)" : "scale(0)";
   }
 
-  const isDark = root.classList.contains("dark");
-  updateToggle(isDark);
+  // Estado inicial
+  updateToggle(root.classList.contains("dark"));
 
   toggle.addEventListener("click", () => {
     root.classList.toggle("dark");
