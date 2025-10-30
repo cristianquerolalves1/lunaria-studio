@@ -1,38 +1,54 @@
 ---
 ---
 
-<!-- Cursor: solo se añadirá dinámicamente si estamos en escritorio -->
+// 🚀 Este script solo se ejecuta si es escritorio (no crea elementos en móviles)
 <script is:inline>
-  // Esperar a que el DOM esté listo
   document.addEventListener("DOMContentLoaded", () => {
-    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
-
-    // Si no es escritorio → no hacemos nada
-    if (!isDesktop) return;
+    // Verificar si estamos en escritorio
+    const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!isDesktop) return; // No inicializar en móviles o tablets
 
     // Crear el cursor dinámicamente
     const cursor = document.createElement("div");
     cursor.id = "custom-cursor";
-    cursor.className =
-      "fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[9999] bg-primary opacity-70 mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-150 ease-out";
+    cursor.style.position = "fixed";
+    cursor.style.top = "0";
+    cursor.style.left = "0";
+    cursor.style.width = "24px";
+    cursor.style.height = "24px";
+    cursor.style.borderRadius = "50%";
+    cursor.style.pointerEvents = "none"; // ⚡️ No bloquea clics jamás
+    cursor.style.zIndex = "9999";
+    cursor.style.backgroundColor = "var(--cursor-color, #1D4ED8)";
+    cursor.style.opacity = "0.7";
+    cursor.style.mixBlendMode = "difference";
+    cursor.style.transform = "translate(-50%, -50%)";
+    cursor.style.transition = "transform 0.12s ease-out, opacity 0.25s ease-out";
+
     document.body.appendChild(cursor);
 
-    // Movimiento del cursor
+    // Seguir al ratón
     document.addEventListener("mousemove", (e) => {
       cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     });
 
-    // Efecto hover sobre links y botones
-    const hoverTargets = document.querySelectorAll("a, button");
-    hoverTargets.forEach((el) => {
+    // Efecto hover en botones/enlaces
+    document.querySelectorAll("a, button").forEach((el) => {
       el.addEventListener("mouseenter", () => {
-        cursor.style.scale = "1.8";
+        cursor.style.transform += " scale(1.6)";
         cursor.style.opacity = "0.5";
       });
       el.addEventListener("mouseleave", () => {
-        cursor.style.scale = "1";
+        cursor.style.transform = cursor.style.transform.replace(" scale(1.6)", "");
         cursor.style.opacity = "0.7";
       });
     });
+
+    // Cambiar color si el tema es oscuro
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark");
+      cursor.style.backgroundColor = isDark ? "#FFFFFF" : "#1D4ED8";
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
   });
 </script>
