@@ -20,7 +20,7 @@ const { data } = Astro.props;
   <!-- Grid de marcas -->
   <div class="grid grid-cols-2 md:grid-cols-3 gap-y-8 w-full justify-items-center">
     {data.brands.map((brand) => (
-      <div class="hover:scale-110 transition transform">
+      <div class="hover:scale-110 transition transform" key={brand.icon}>
         <Action as="a" href={brand.href} target="_blank" title={brand.icon}>
           <ion-icon
             name={brand.icon.toLowerCase()}
@@ -33,5 +33,5 @@ const { data } = Astro.props;
 </section>
 
 <!-- Ionicons CDN -->
-<script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script is:external type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script is:external nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
