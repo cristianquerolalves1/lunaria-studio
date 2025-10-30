@@ -132,3 +132,4 @@ export type Icon =
   | "VueIcon"
   | "VercelIcon"
   | "NetlifyIcon";
+  

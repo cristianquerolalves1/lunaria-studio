@@ -8,7 +8,6 @@ interface Props {
 }
 
 const { data } = Astro.props;
-const adventajes = data.adventajes || []; // Protección clave
 ---
 
 <section id="adventajes-section" class="flex flex-col mb-20 gap-y-28">
@@ -17,7 +16,7 @@ const adventajes = data.adventajes || []; // Protección clave
   </SectionTitle>
   <div>
     {
-      adventajes.map((adventaje, idx) => (
+      data.adventajes.map((adventaje, idx) => (
         <SideBySide data={adventaje} reversed={(idx + 1) % 2 === 0} />
       ))
     }
