@@ -1,5 +1,6 @@
 ---
 import Action from "@/components/Action.astro";
+import ThemeToggle from "@/components/ThemeToggle.astro";
 import type { HeaderData } from "@/config/landing.interface";
 
 interface Props {
@@ -11,44 +12,116 @@ const { data } = Astro.props;
 
 <header
   id="navbar"
-  class="w-full transition duration-300 justify-center fixed h-20 z-50 hidden md:flex"
+  class="w-full fixed top-0 z-50 transition duration-300 bg-transparent border-b border-b-transparent"
 >
-  <nav aria-label="Main Navigation" class="flex flex-row items-center w-3/4">
-    <div class="text-nowrap">
-      <Action as="a" class="text-xl" href="#">{data.logo}</Action>
+  <nav
+    aria-label="Main Navigation"
+    class="flex items-center justify-between w-full md:w-3/4 mx-auto px-4 h-20 text-black dark:text-white"
+  >
+    <!-- Logo -->
+    <div class="text-xl font-semibold">
+      <Action as="a" class="text-black dark:text-white" href="#">
+        {data.logo}
+      </Action>
     </div>
-    <ul class="flex flex-row w-full justify-center gap-x-14">
-      {
-        data.links.map((item) => (
-          <li class="text-lg hover:scale-110 hover:opacity-80">
-            <Action as="a" href={item.href}>
-              {item.label}
-            </Action>
-          </li>
-        ))
-      }
+
+    <!-- Links (desktop) -->
+    <ul class="hidden md:flex gap-x-14">
+      {data.links.map((item) => (
+        <li class="text-lg hover:scale-110 hover:opacity-80 transition">
+          <Action as="a" class="text-black dark:text-white" href={item.href}>
+            {item.label}
+          </Action>
+        </li>
+      ))}
     </ul>
-    <span></span>
+
+    <!-- Right section -->
+    <div class="flex items-center gap-4">
+      <ThemeToggle />
+
+      <!-- Hamburger button (mobile only) -->
+      <button
+        id="menu-toggle"
+        class="md:hidden relative w-8 h-8 flex flex-col justify-between items-center"
+        aria-label="Abrir menú"
+      >
+        <span
+          class="block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300"
+        ></span>
+        <span
+          class="block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300"
+        ></span>
+        <span
+          class="block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300"
+        ></span>
+      </button>
+    </div>
   </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden fixed top-20 left-0 w-full bg-white dark:bg-black text-black dark:text-white shadow-lg flex flex-col items-center gap-6 py-8 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out"
+  >
+    {data.links.map((item) => (
+      <Action
+        as="a"
+        class="text-xl hover:text-primary transition"
+        href={item.href}
+      >
+        {item.label}
+      </Action>
+    ))}
+  </div>
 </header>
 
-<script>
-  window.addEventListener("scroll", function () {
-    const navbar = document.getElementById("navbar");
-    if (!navbar) return;
+<script is:inline>
+  const navbar = document.getElementById("navbar");
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const bars = menuToggle.querySelectorAll("span");
 
+  // Navbar color on scroll
+  window.addEventListener("scroll", () => {
     if (window.scrollY >= 20) {
-      navbar.classList.remove("border-b-transparent");
-      navbar.classList.remove("bg-transparent");
-      navbar.classList.add("border-b");
-      navbar.classList.add("border-b-slate-300");
-      navbar.classList.add("bg-white");
+      navbar.classList.remove("border-b-transparent", "bg-transparent");
+      navbar.classList.add("border-b", "border-b-slate-300", "bg-white", "dark:bg-black");
     } else {
-      navbar.classList.remove("border-b");
-      navbar.classList.remove("border-b-slate-300");
-      navbar.classList.remove("bg-white");
-      navbar.classList.add("border-b-transparent");
-      navbar.classList.add("bg-transparent");
+      navbar.classList.remove("border-b", "border-b-slate-300", "bg-white", "dark:bg-black");
+      navbar.classList.add("border-b-transparent", "bg-transparent");
     }
+  });
+
+  // Toggle menu on click
+  menuToggle.addEventListener("click", () => {
+    const isOpen = menuToggle.classList.toggle("open");
+
+    // Animate bars
+    if (isOpen) {
+      bars[0].style.transform = "rotate(45deg) translateY(10px)";
+      bars[1].style.opacity = "0";
+      bars[2].style.transform = "rotate(-45deg) translateY(-10px)";
+      mobileMenu.classList.remove("-translate-y-full", "opacity-0");
+      mobileMenu.classList.add("translate-y-0", "opacity-100");
+    } else {
+      bars[0].style.transform = "";
+      bars[1].style.opacity = "1";
+      bars[2].style.transform = "";
+      mobileMenu.classList.add("-translate-y-full", "opacity-0");
+      mobileMenu.classList.remove("translate-y-0", "opacity-100");
+    }
+  });
+
+  // Cierra el menú al hacer clic en un enlace
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("open");
+      bars[0].style.transform = "";
+      bars[1].style.opacity = "1";
+      bars[2].style.transform = "";
+      mobileMenu.classList.add("-translate-y-full", "opacity-0");
+      mobileMenu.classList.remove("translate-y-0", "opacity-100");
+    });
   });
 </script>

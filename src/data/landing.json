@@ -90,18 +90,19 @@
     ]
   },
 
-  "brandsData": {
-    "title": "Listo para tus Plataformas Favoritas",
-    "description": "Tus diseños optimizados para redes sociales, streaming, música y más. Fácil de usar en cualquier lugar.",
-    "brands": [
-      { "label": "Instagram", "icon": "InstagramIcon", "href": "https://instagram.com" },
-      { "label": "Twitch", "icon": "FacebookIcon", "href": "https://twitch.tv" },
-      { "label": "Twitter", "icon": "TwitterIcon", "href": "https://x.com" },
-      { "label": "Youtube", "icon": "NetlifyIcon", "href": "https://youtube.com" },
-	  { "label": "Discord", "icon": "ReactIcon", "href": "https://instagram.com" },
-	  { "label": "Tiktok", "icon": "SolidIcon", "href": "https://tiktok.com" }
-    ]
-  },
+
+"brandsData": {
+  "title": "Nuestras Redes Sociales",
+  "description": "Síguenos y mantente conectado en todas nuestras plataformas. Contenido actualizado, tips y mucho más.",
+  "brands": [
+    { "label": "Instagram", "icon": "InstagramIcon", "href": "https://instagram.com/lunariastudio_design" },
+    { "label": "Twitch", "icon": "FaceBookIcon", "href": "https://twitch.tv/cristianquerool" },
+    { "label": "Twitter", "icon": "TwitterIcon", "href": "https://x.com/lunariastudio_" },
+    { "label": "YouTube", "icon": "NetlifyIcon", "href": "https://youtube.com/lunariastudio_design" },
+    { "label": "Discord", "icon": "ReactIcon", "href": "https://discord.com/" },
+    { "label": "TikTok", "icon": "SolidIcon", "href": "https://tiktok.com/lunariastudio_design" }
+  ]
+},
 
   "pricingData": {
     "title": "Nuestros Planes",

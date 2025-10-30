@@ -1,0 +1,20 @@
+<div
+  id="cursor"
+  class="fixed top-0 left-0 w-5 h-5 rounded-full bg-primary opacity-70 pointer-events-none mix-blend-difference z-[9999] transition-transform duration-150 ease-out"
+></div>
+
+<script is:inline>
+  const cursor = document.getElementById("cursor");
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+  });
+
+  document.addEventListener("mousedown", () => {
+    cursor.style.transform += " scale(0.7)";
+  });
+
+  document.addEventListener("mouseup", () => {
+    cursor.style.transform = cursor.style.transform.replace(" scale(0.7)", "");
+  });
+</script>

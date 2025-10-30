@@ -1,5 +1,7 @@
 ---
 import Background from "@/components/Background.astro";
+import CustomCursor from "@/components/CustomCursor.astro";
+import ScrollToTop from "@/components/ScrollToTop.astro";
 import type { Meta } from "@/config/landing.interface";
 import "@fontsource-variable/rubik";
 
@@ -8,14 +10,13 @@ interface Props {
 }
 
 const { meta } = Astro.props;
-
 const ldJson = JSON.stringify(meta.ldJson);
 ---
 
 <!doctype html>
 <html
-  class="scrollbar-thin scrollbar-thumb-black scrollbar-track-transparent scroll-smooth"
   lang={meta.lang ?? "en"}
+  class="scrollbar-thin scrollbar-thumb-black scrollbar-track-transparent scroll-smooth"
 >
   <head>
     <meta charset={meta.charset ?? "UTF-8"} />
@@ -25,10 +26,27 @@ const ldJson = JSON.stringify(meta.ldJson);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={import.meta.env.SITE} />
     <script type="application/ld+json" set:html={ldJson} is:inline />
+
+    <script is:inline>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
-  <body class="bg-white">
+
+  <body
+    class="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300"
+  >
     <Background />
+    <CustomCursor />
     <slot />
+    <ScrollToTop />
   </body>
 </html>
 
