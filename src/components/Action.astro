@@ -1,21 +1,23 @@
 ---
 import type { HTMLTag, Polymorphic } from "astro/types";
 
-type actionTypes = "button" | "text" | "icon" | "default";
+type ActionType = "button" | "text" | "icon" | "default";
 
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>;
 
 const { as: Tag, class: className, type, ...props } = Astro.props;
 
-const defaultStyles = {
+const defaultStyles: Record<ActionType, string> = {
   button:
-    "px-3 py-1 text-sm md:text-base md:px-6 md:py-2 rounded-lg text-center font-semibold hover:scale-110 hover:opacity-85 transition inline-block",
+    "inline-block rounded-lg px-3 py-1 text-sm font-semibold text-center transition hover:scale-110 hover:opacity-85 md:px-6 md:py-2 md:text-base",
   text: "hover:opacity-50 hover:scale-105",
   icon: "text-white hover:opacity-50 hover:scale-105",
   default: "",
 };
 
-const baseClass = defaultStyles[type as actionTypes] ?? "";
+const baseClass = defaultStyles[type as ActionType] ?? "";
 ---
 
-<Tag class:list={[baseClass, className]} {...props}><slot /></Tag>
+<Tag class:list={[baseClass, className]} {...props}>
+  <slot />
+</Tag>
