@@ -75,6 +75,7 @@ export interface Brand {
   href: string;
 }
 
+
 export interface PricingData {
   title: string;
   tiers: Tier[];

@@ -92,13 +92,13 @@
 
 
 "brandsData": {
-  "title": "Nuestras Redes Sociales",
-  "description": "Síguenos y mantente conectado en todas nuestras plataformas. Contenido actualizado, tips y mucho más.",
+  "title": "Nuestros partners",
+  "description": "Trabajamos con las mejores marcas",
   "brands": [
-    { "label": "Instagram", "icon": "logo-instagram", "href": "https://instagram.com/luniriastudio_design" },
-    { "label": "Tiktok", "icon": "logo-tiktok", "href": "https://tiktok.com/luniriastudio_design" },
-    { "label": "Twitter", "icon": "logo-twitter", "href": "https://x.com/luniriastudio_" },
-    { "label": "Youtube", "icon": "logo-youtube", "href": "https://youtube.com/luniriastudio" },
+    { "label": "Instagram", "icon": "logo-instagram", "href": "https://instagram.com/lunariastudio_design" },
+    { "label": "TikTok", "icon": "logo-tiktok", "href": "https://tiktok.com/lunariastudio_design" },
+    { "label": "X", "icon": "logo-x", "href": "https://x.com/lunariastudio_" },
+    { "label": "YouTube", "icon": "logo-youtube", "href": "https://youtube.com/lunariastudio" },
     { "label": "Twitch", "icon": "logo-twitch", "href": "https://twitch.tv/cristianquerool" },
     { "label": "Portfolio", "icon": "images-outline", "href": "https://lunariastudio.carrd.co/" }
   ]
