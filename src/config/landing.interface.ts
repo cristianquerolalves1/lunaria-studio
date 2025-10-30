@@ -6,6 +6,7 @@ export interface LandingPageData {
   adventajesData: AdventajesData;
   brandsData: BrandsData;
   pricingData: PricingData;
+  contact: ContactData; 
   footerData: FooterData;
 }
 
