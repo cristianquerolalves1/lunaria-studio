@@ -69,7 +69,6 @@
     ]
   },
 
- 
   "adventajesData": {
     "title": "Por qué elegir Lunaria Studio",
     "adventajes": [
@@ -90,77 +89,73 @@
     ]
   },
 
-
-"brandsData": {
-  "title": "Nuestras Redes Sociales",
-  "description": "Síguenos y mantente conectado en todas nuestras plataformas. Contenido actualizado, tips y mucho más.",
-  "brands": [
-    { "label": "Instagram", "icon": "InstagramIcon", "href": "https://instagram.com/lunariastudio_design" },
-    { "label": "Twitch", "icon": "FaceBookIcon", "href": "https://twitch.tv/cristianquerool" },
-    { "label": "Twitter", "icon": "TwitterIcon", "href": "https://x.com/lunariastudio_" },
-    { "label": "YouTube", "icon": "NetlifyIcon", "href": "https://youtube.com/lunariastudio_design" },
-    { "label": "Discord", "icon": "ReactIcon", "href": "https://discord.com/" },
-    { "label": "TikTok", "icon": "SolidIcon", "href": "https://tiktok.com/lunariastudio_design" }
-  ]
-},
+  "brandsData": {
+    "title": "Nuestras Redes Sociales",
+    "description": "Síguenos y mantente conectado en todas nuestras plataformas. Contenido actualizado, tips y mucho más.",
+    "brands": [
+      { "label": "Instagram", "icon": "InstagramIcon", "href": "https://instagram.com/lunariastudio_design" },
+      { "label": "Twitch", "icon": "FacebookIcon", "href": "https://twitch.tv/cristianquerool" },
+      { "label": "Twitter", "icon": "TwitterIcon", "href": "https://x.com/lunariastudio_" },
+      { "label": "YouTube", "icon": "NetlifyIcon", "href": "https://youtube.com/lunariastudio_design" },
+      { "label": "Discord", "icon": "ReactIcon", "href": "https://discord.com/" },
+      { "label": "TikTok", "icon": "SolidIcon", "href": "https://tiktok.com/lunariastudio_design" }
+    ]
+  },
 
   "pricingData": {
     "title": "Nuestros Planes",
-  "tiers": [
-    {
-      "title": "Essential",
-      "description": "Diseño rápido y profesional en 48h.",
-      "price": { "amount": "$15" },
-      "features": [
-        "Hasta 2 personas",
-        "1 revisión",
-        "PNG + JPG (1080p)",
-        "Entrega en 48h",
-        "Licencia comercial"
-      ],
-      "cta": "Elegir Essential",
-      "href": "https://wa.link/g5nu3l"
-    },
-    {
-      "title": "Signature",
-      "description": "Diseño premium + envío físico de lujo.",
-      "price": { "amount": "$35" },
-      "features": [
-        "Hasta 2 personas detalladas",
-        "3 revisiones",
-        "PNG + SVG + PSD",
-        "Impresión A5 premium",
-        "Envío certificado"
-      ],
-      "cta": "Más Popular",
-      "href": "https://wa.link/g5nu3l"
-    },
-    {
-      "title": "Bespoke",
-      "description": "Diseño 100% a medida, sin límites.",
-      "price": { "amount": "A consultar" },
-      "features": [
-        "Propuesta en 24h",
-        "Personajes ilimitados",
-        "Revisiones ilimitadas",
-        "Estilos avanzados",
-        "Soporte directo"
-      ],
-      "cta": "Solicitar Bespoke",
-      "href": "https://calendly.com/lunaria-studio/30min"
-    }
-  ]
-},
+    "tiers": [
+      {
+        "title": "Essential",
+        "description": "Diseño rápido y profesional en 48h.",
+        "price": { "amount": "$15" },
+        "features": [
+          "Hasta 2 personas",
+          "1 revisión",
+          "PNG + JPG (1080p)",
+          "Entrega en 48h",
+          "Licencia comercial"
+        ],
+        "cta": "Elegir Essential",
+        "href": "https://wa.link/g5nu3l"
+      },
+      {
+        "title": "Signature",
+        "description": "Diseño premium + envío físico de lujo.",
+        "price": { "amount": "$35" },
+        "features": [
+          "Hasta 2 personas detalladas",
+          "3 revisiones",
+          "PNG + SVG + PSD",
+          "Impresión A5 premium",
+          "Envío certificado"
+        ],
+        "cta": "Más Popular",
+        "href": "https://wa.link/g5nu3l"
+      },
+      {
+        "title": "Bespoke",
+        "description": "Diseño 100% a medida, sin límites.",
+        "price": { "amount": "A consultar" },
+        "features": [
+          "Propuesta en 24h",
+          "Personajes ilimitados",
+          "Revisiones ilimitadas",
+          "Estilos avanzados",
+          "Soporte directo"
+        ],
+        "cta": "Solicitar Bespoke",
+        "href": "https://calendly.com/lunaria-studio/30min"
+      }
+    ]
+  },
 
   "footerData": {
     "logo": "Lunaria Studio",
     "description": "Diseños cartoon digitales con amor y estilo. Económicos, rápidos y con opción de envío físico premium.",
     "links": [
-
       { "label": "Contacto", "href": "mailto:holalunariastudio@proton.me" }
     ],
-    "socials": [
-    
-    ]
+    "socials": []
   }
 }
