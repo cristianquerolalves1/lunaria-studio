@@ -97,7 +97,7 @@
   "brands": [
     { "label": "Instagram", "icon": "logo-instagram", "href": "https://instagram.com/lunariastudio_design" },
     { "label": "TikTok", "icon": "logo-tiktok", "href": "https://tiktok.com/lunariastudio_design" },
-    { "label": "X", "icon": "logo-x", "href": "https://x.com/lunariastudio_" },
+    { "label": "X", "icon": "logo-twitter", "href": "https://x.com/lunariastudio_" },
     { "label": "YouTube", "icon": "logo-youtube", "href": "https://youtube.com/lunariastudio" },
     { "label": "Twitch", "icon": "logo-twitch", "href": "https://twitch.tv/cristianquerool" },
     { "label": "Portfolio", "icon": "images-outline", "href": "https://lunariastudio.carrd.co/" }
