@@ -89,6 +89,20 @@ export interface Tier {
   href?: string; 
 }
 
+export interface ContactData {
+  title: string;
+  description: string;
+  form: {
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+    submitLabel: string;
+  };
+}
+
 
 export interface Price {
   amount: string;

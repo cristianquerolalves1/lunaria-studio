@@ -1,0 +1,88 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/sections/Footer.astro";
+import Header from "@/sections/Header.astro";
+---
+
+<Layout
+  meta={{
+    title: "Política de Privacidad | Lunaria Studio",
+    description: "Conoce cómo Lunaria Studio protege tus datos personales.",
+  }}
+>
+  <Header />
+  <main class="max-w-5xl mx-auto px-6 pt-36 pb-20 text-gray-800 dark:text-gray-200">
+    <h1 class="text-4xl md:text-5xl font-semibold mb-10 text-center text-gradient">
+      Política de Privacidad
+    </h1>
+
+    <p class="text-lg mb-6 leading-relaxed">
+      En <strong>Lunaria Studio</strong> valoramos profundamente tu privacidad y el respeto por tus datos personales. Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos tu información cuando utilizas nuestros servicios digitales.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">1. Información que recopilamos</h2>
+    <p class="mb-6">
+      Podemos recopilar la siguiente información:
+    </p>
+    <ul class="list-disc list-inside mb-6 space-y-2">
+      <li>Datos de contacto: nombre, correo electrónico, teléfono y redes sociales.</li>
+      <li>Datos técnicos: dirección IP, tipo de dispositivo, navegador, sistema operativo.</li>
+      <li>Datos de navegación: páginas visitadas, tiempo de permanencia, clics, formularios enviados.</li>
+      <li>Información de cookies y tecnologías similares.</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">2. Finalidad del tratamiento</h2>
+    <p class="mb-6">
+      Los datos se utilizan para:
+    </p>
+    <ul class="list-disc list-inside mb-6 space-y-2">
+      <li>Mejorar la experiencia de usuario y personalizar los contenidos.</li>
+      <li>Enviar comunicaciones sobre novedades, promociones o servicios.</li>
+      <li>Optimizar el rendimiento y la seguridad de nuestro sitio web.</li>
+      <li>Cumplir obligaciones legales y fiscales aplicables.</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">3. Base legal</h2>
+    <p class="mb-6">
+      El tratamiento de tus datos se basa en tu consentimiento, en la ejecución de un contrato o en el cumplimiento de obligaciones legales conforme al Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica de Protección de Datos española (LOPDGDD).
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">4. Conservación de datos</h2>
+    <p class="mb-6">
+      Conservaremos tus datos solo durante el tiempo necesario para los fines descritos o hasta que solicites su eliminación.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">5. Derechos del usuario</h2>
+    <p class="mb-6">
+      Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiéndonos a <a href="mailto:holalunariastudio@proton.me" class="text-pink-400 underline">holalunariastudio@proton.me</a>.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">6. Seguridad</h2>
+    <p class="mb-6">
+      Implementamos medidas técnicas y organizativas avanzadas para garantizar la seguridad, confidencialidad e integridad de los datos personales.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">7. Cookies</h2>
+    <p class="mb-6">
+      Utilizamos cookies para mejorar tu experiencia. Puedes configurar tu navegador para rechazarlas o eliminarlas en cualquier momento. Consulta nuestra <a href="/cookies-policy" class="text-pink-400 underline">Política de Cookies</a> para más información.
+    </p>
+
+    <h2 class="text-2xl font-semibold mt-10 mb-4">8. Cambios en esta política</h2>
+    <p class="mb-10">
+      Lunaria Studio se reserva el derecho de modificar esta Política de Privacidad para adaptarla a novedades legislativas o tecnológicas. Te recomendamos revisarla periódicamente.
+    </p>
+
+    <p class="text-sm text-center text-gray-400">
+      Última actualización: {new Date().toLocaleDateString("es-ES", { year: "numeric", month: "long", day: "numeric" })}
+    </p>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .text-gradient {
+    background: linear-gradient(90deg, #ec4899, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

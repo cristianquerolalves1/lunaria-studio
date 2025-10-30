@@ -76,14 +76,14 @@
       {
         "title": "Diseños Profesionales y Económicos",
         "description": "Calidad premium a precios accesibles. Ideal para creadores independientes y marcas pequeñas que buscan destacar.",
-        "img": "template.webp",
+        "img": "undraw-drawing.webp",
         "imageAlt": "Ejemplo de diseño cartoon económico y profesional",
         "checks": ["Entrega en 48h", "Archivos PNG + JPG", "Uso comercial"]
       },
       {
         "title": "Envío Físico con Tarjeta Personalizada",
         "description": "Desde el plan Signature, recibe tu diseño impreso en alta calidad + tarjeta personalizada con dedicatoria. ¡Un regalo inolvidable!",
-        "img": "seo.webp",
+        "img": "undraw-vintage.webp",
         "imageAlt": "Diseño impreso con tarjeta personalizada",
         "checks": ["Impresión premium", "Tarjeta con dedicatoria", "Envío a todo el mundo"]
       }
@@ -95,12 +95,12 @@
   "title": "Nuestras Redes Sociales",
   "description": "Síguenos y mantente conectado en todas nuestras plataformas. Contenido actualizado, tips y mucho más.",
   "brands": [
-    { "label": "Instagram", "icon": "InstagramIcon", "href": "https://instagram.com/lunariastudio_design" },
-    { "label": "Twitch", "icon": "FaceBookIcon", "href": "https://twitch.tv/cristianquerool" },
-    { "label": "Twitter", "icon": "TwitterIcon", "href": "https://x.com/lunariastudio_" },
-    { "label": "YouTube", "icon": "NetlifyIcon", "href": "https://youtube.com/lunariastudio_design" },
-    { "label": "Discord", "icon": "ReactIcon", "href": "https://discord.com/" },
-    { "label": "TikTok", "icon": "SolidIcon", "href": "https://tiktok.com/lunariastudio_design" }
+     { "icon": "logo-instagram", "href": "https://instagram.com/luniriastudio_design" },
+    { "icon": "logo-tiktok", "href": "https://tiktok.com/luniriastudio_design" },
+    { "icon": "logo-twitter", "href": "https://x.com/luniriastudio_" },
+    { "icon": "logo-youtube", "href": "https://youtube.com/luniriastudio" },
+    { "icon": "logo-twitch", "href": "https://twitch.tv/cristianquerool" },
+    { "icon": "images-outline", "href": "https://lunariastudio.carrd.co/" }
   ]
 },
 
@@ -151,13 +151,37 @@
     }
   ]
 },
+"contact": {
+  "title": "Ponte en contacto",
+  "description": "¿Tienes una idea o proyecto en mente? Escríbeme y charlamos para hacerlo realidad.",
+  "form": {
+    "nameLabel": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "nombre@ejemplo.com",
+    "messageLabel": "Mensaje",
+    "messagePlaceholder": "Escribe tu mensaje...",
+    "submitLabel": "Enviar mensaje"
+  }
+},
+
+
 
   "footerData": {
     "logo": "Lunaria Studio",
     "description": "Diseños cartoon digitales con amor y estilo. Económicos, rápidos y con opción de envío físico premium.",
     "links": [
 
-      { "label": "Contacto", "href": "mailto:holalunariastudio@proton.me" }
+      { "label": "Contacto", "href": "mailto:holalunariastudio@proton.me" },
+	  {
+  "label": "Política de Privacidad",
+  "href": "/privacy-policy"
+},
+{
+  "label": "Términos y Condiciones",
+  "href": "/terms-and-conditions"
+}
+
     ],
     "socials": [
     

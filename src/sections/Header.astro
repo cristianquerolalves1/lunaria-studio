@@ -4,32 +4,46 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
 import type { HeaderData } from "@/config/landing.interface";
 
 interface Props {
-  data: HeaderData;
+  data?: HeaderData; // ahora opcional
 }
 
 const { data } = Astro.props;
+
+// ✅ Valores por defecto si no se pasa `data`
+const defaultHeader: HeaderData = {
+  logo: "Lunaria Studio",
+  links: [
+    { label: "Inicio", href: "/" },
+    { label: "Servicios", href: "/#services-section" },
+    { label: "Planes", href: "/#pricing-section" },
+    { label: "Contacto", href: "/#contact-section" },
+  ],
+};
+
+const headerData = data ?? defaultHeader;
 ---
 
 <header
   id="navbar"
-  class="w-full fixed top-0 z-50 transition duration-300 bg-transparent border-b border-b-transparent"
+  class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur-xl
+         bg-white/20 dark:bg-black/20 border-b border-transparent"
 >
   <nav
     aria-label="Main Navigation"
-    class="flex items-center justify-between w-full md:w-3/4 mx-auto px-4 h-20 text-black dark:text-white"
+    class="flex items-center justify-between w-full md:w-3/4 mx-auto px-5 h-20 text-black dark:text-white"
   >
     <!-- Logo -->
-    <div class="text-xl font-semibold">
-      <Action as="a" class="text-black dark:text-white" href="#">
-        {data.logo}
+    <div class="text-xl font-semibold tracking-wide">
+      <Action as="a" href="/" class="text-black dark:text-white hover:opacity-80 transition">
+        {headerData.logo}
       </Action>
     </div>
 
     <!-- Links (desktop) -->
-    <ul class="hidden md:flex gap-x-14">
-      {data.links.map((item) => (
-        <li class="text-lg hover:scale-110 hover:opacity-80 transition">
-          <Action as="a" class="text-black dark:text-white" href={item.href}>
+    <ul class="hidden md:flex gap-x-10 lg:gap-x-14">
+      {headerData.links.map((item) => (
+        <li class="text-lg font-medium hover:scale-110 hover:opacity-80 transition-all duration-300">
+          <Action as="a" href={item.href} class="text-black dark:text-white">
             {item.label}
           </Action>
         </li>
@@ -40,35 +54,37 @@ const { data } = Astro.props;
     <div class="flex items-center gap-4">
       <ThemeToggle />
 
-      <!-- Hamburger button (mobile only) -->
+      <!-- Botón hamburguesa (solo móvil) -->
       <button
         id="menu-toggle"
-        class="md:hidden relative w-8 h-8 flex flex-col justify-between items-center"
         aria-label="Abrir menú"
+        class="md:hidden relative flex flex-col justify-between items-center w-10 h-10
+               rounded-xl border border-white/40 dark:border-black/40 
+               bg-white/30 dark:bg-black/30 backdrop-blur-xl
+               transition-all duration-500 hover:scale-110 active:scale-95"
       >
-        <span
-          class="block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300"
-        ></span>
-        <span
-          class="block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300"
-        ></span>
-        <span
-          class="block w-6 h-0.5 bg-black dark:bg-white transition-all duration-300"
-        ></span>
+        <span class="block w-6 h-0.5 bg-black dark:bg-white rounded-full transition-all duration-500"></span>
+        <span class="block w-6 h-0.5 bg-black dark:bg-white rounded-full transition-all duration-500"></span>
+        <span class="block w-6 h-0.5 bg-black dark:bg-white rounded-full transition-all duration-500"></span>
       </button>
     </div>
   </nav>
 
-  <!-- Mobile menu -->
+  <!-- Menú móvil -->
   <div
     id="mobile-menu"
-    class="md:hidden fixed top-20 left-0 w-full bg-white dark:bg-black text-black dark:text-white shadow-lg flex flex-col items-center gap-6 py-8 transform -translate-y-full opacity-0 transition-all duration-500 ease-in-out"
+    class="md:hidden fixed top-20 left-0 w-full h-[calc(100vh-5rem)]
+           flex flex-col items-center justify-center gap-8 text-xl font-medium
+           text-black dark:text-white
+           bg-white/30 dark:bg-black/30 backdrop-blur-2xl
+           transform -translate-y-full opacity-0 pointer-events-none
+           transition-all duration-700 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)]"
   >
-    {data.links.map((item) => (
+    {headerData.links.map((item) => (
       <Action
         as="a"
-        class="text-xl hover:text-primary transition"
         href={item.href}
+        class="text-2xl hover:text-blue-400 dark:hover:text-pink-400 transition-all duration-300"
       >
         {item.label}
       </Action>
@@ -82,46 +98,48 @@ const { data } = Astro.props;
   const mobileMenu = document.getElementById("mobile-menu");
   const bars = menuToggle.querySelectorAll("span");
 
-  // Navbar color on scroll
+  // Efecto glass dinámico al hacer scroll
   window.addEventListener("scroll", () => {
     if (window.scrollY >= 20) {
-      navbar.classList.remove("border-b-transparent", "bg-transparent");
-      navbar.classList.add("border-b", "border-b-slate-300", "bg-white", "dark:bg-black");
+      navbar.classList.add("border-b", "border-white/30", "dark:border-white/10");
+      navbar.classList.add("bg-white/40", "dark:bg-black/40");
     } else {
-      navbar.classList.remove("border-b", "border-b-slate-300", "bg-white", "dark:bg-black");
-      navbar.classList.add("border-b-transparent", "bg-transparent");
+      navbar.classList.remove("border-b", "border-white/30", "dark:border-white/10");
+      navbar.classList.remove("bg-white/40", "dark:bg-black/40");
     }
   });
 
-  // Toggle menu on click
+  // Animación hamburguesa + menú
   menuToggle.addEventListener("click", () => {
     const isOpen = menuToggle.classList.toggle("open");
 
-    // Animate bars
     if (isOpen) {
-      bars[0].style.transform = "rotate(45deg) translateY(10px)";
+      bars[0].style.transform = "translateY(8px) rotate(45deg)";
       bars[1].style.opacity = "0";
-      bars[2].style.transform = "rotate(-45deg) translateY(-10px)";
-      mobileMenu.classList.remove("-translate-y-full", "opacity-0");
-      mobileMenu.classList.add("translate-y-0", "opacity-100");
+      bars[2].style.transform = "translateY(-8px) rotate(-45deg)";
+      mobileMenu.style.opacity = "1";
+      mobileMenu.style.transform = "translateY(0)";
+      mobileMenu.style.pointerEvents = "auto";
     } else {
       bars[0].style.transform = "";
       bars[1].style.opacity = "1";
       bars[2].style.transform = "";
-      mobileMenu.classList.add("-translate-y-full", "opacity-0");
-      mobileMenu.classList.remove("translate-y-0", "opacity-100");
+      mobileMenu.style.opacity = "0";
+      mobileMenu.style.transform = "translateY(-100%)";
+      mobileMenu.style.pointerEvents = "none";
     }
   });
 
-  // Cierra el menú al hacer clic en un enlace
+  // Cerrar menú al hacer clic en un enlace
   mobileMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       menuToggle.classList.remove("open");
       bars[0].style.transform = "";
       bars[1].style.opacity = "1";
       bars[2].style.transform = "";
-      mobileMenu.classList.add("-translate-y-full", "opacity-0");
-      mobileMenu.classList.remove("translate-y-0", "opacity-100");
+      mobileMenu.style.opacity = "0";
+      mobileMenu.style.transform = "translateY(-100%)";
+      mobileMenu.style.pointerEvents = "none";
     });
   });
 </script>

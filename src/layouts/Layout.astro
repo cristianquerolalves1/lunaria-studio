@@ -1,22 +1,33 @@
 ---
 import Background from "@/components/Background.astro";
-import CustomCursor from "@/components/CustomCursor.astro";
 import ScrollToTop from "@/components/ScrollToTop.astro";
 import type { Meta } from "@/config/landing.interface";
 import "@fontsource-variable/rubik";
 
+// Props opcionales y seguras
 interface Props {
-  meta: Meta;
+  meta?: Meta;
 }
 
-const { meta } = Astro.props;
-const ldJson = JSON.stringify(meta.ldJson);
+// Valores por defecto en caso de que meta no se pase (por ejemplo, en Privacy o Terms)
+const {
+  meta = {
+    title: "Lunaria Studio",
+    description: "Estudio creativo premium especializado en diseño, branding y desarrollo web.",
+    lang: "es",
+    charset: "UTF-8",
+    ldJson: null
+  }
+} = Astro.props;
+
+// Evita errores si ldJson no existe
+const ldJson = meta?.ldJson ? JSON.stringify(meta.ldJson) : null;
 ---
 
 <!doctype html>
 <html
-  lang={meta.lang ?? "en"}
-  class="scrollbar-thin scrollbar-thumb-black scrollbar-track-transparent scroll-smooth"
+  lang={meta.lang ?? "es"}
+  class="scrollbar-thin scrollbar-thumb-primary scrollbar-track-transparent scroll-smooth"
 >
   <head>
     <meta charset={meta.charset ?? "UTF-8"} />
@@ -25,8 +36,12 @@ const ldJson = JSON.stringify(meta.ldJson);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={import.meta.env.SITE} />
-    <script type="application/ld+json" set:html={ldJson} is:inline />
 
+    {ldJson && (
+      <script type="application/ld+json" set:html={ldJson} is:inline />
+    )}
+
+    <!-- Theme mode -->
     <script is:inline>
       if (
         localStorage.theme === "dark" ||
@@ -41,10 +56,12 @@ const ldJson = JSON.stringify(meta.ldJson);
   </head>
 
   <body
-    class="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300"
+    class="bg-white text-black dark:bg-black dark:text-white transition-colors duration-500 font-['Rubik_Variable'] relative overflow-x-hidden"
   >
+    <!-- Fondo con Glassmorphism -->
+    <div class="fixed inset-0 -z-10 bg-gradient-to-br from-blue-100/60 via-white/60 to-pink-100/60 dark:from-gray-900/70 dark:via-black/70 dark:to-gray-800/70 backdrop-blur-3xl transition-all duration-700"></div>
+
     <Background />
-    <CustomCursor />
     <slot />
     <ScrollToTop />
   </body>
@@ -62,5 +79,21 @@ const ldJson = JSON.stringify(meta.ldJson);
       Bitstream Vera Sans Mono,
       Courier New,
       monospace;
+  }
+
+  ::selection {
+    background-color: rgba(0, 163, 255, 0.3);
+    color: #000;
+  }
+
+  html.dark ::selection {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+  }
+
+  /* Suaviza las animaciones globales */
+  * {
+    transition-property: color, background-color, border-color, transform, opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 </style>
