@@ -1,54 +1,60 @@
 ---
 ---
 
-// 🚀 Este script solo se ejecuta si es escritorio (no crea elementos en móviles)
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    // Verificar si estamos en escritorio
+    // Detectar entorno de escritorio (ratón real)
     const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!isDesktop) return; // No inicializar en móviles o tablets
+    if (!isDesktop) return;
 
-    // Crear el cursor dinámicamente
+    // Crear cursor dinámico
     const cursor = document.createElement("div");
-    cursor.id = "custom-cursor";
-    cursor.style.position = "fixed";
-    cursor.style.top = "0";
-    cursor.style.left = "0";
-    cursor.style.width = "24px";
-    cursor.style.height = "24px";
-    cursor.style.borderRadius = "50%";
-    cursor.style.pointerEvents = "none"; // ⚡️ No bloquea clics jamás
-    cursor.style.zIndex = "9999";
-    cursor.style.backgroundColor = "var(--cursor-color, #1D4ED8)";
-    cursor.style.opacity = "0.7";
-    cursor.style.mixBlendMode = "difference";
-    cursor.style.transform = "translate(-50%, -50%)";
-    cursor.style.transition = "transform 0.12s ease-out, opacity 0.25s ease-out";
+    Object.assign(cursor.style, {
+      position: "fixed",
+      top: "0",
+      left: "0",
+      width: "24px",
+      height: "24px",
+      borderRadius: "50%",
+      pointerEvents: "none", // no bloquea clics
+      zIndex: "9999",
+      backgroundColor: "var(--cursor-color, #1D4ED8)",
+      opacity: "0.7",
+      mixBlendMode: "difference",
+      transform: "translate(-50%, -50%)",
+      transition: "transform 0.12s ease-out, opacity 0.25s ease-out",
+    });
 
+    cursor.id = "custom-cursor";
     document.body.appendChild(cursor);
 
-    // Seguir al ratón
+    // Movimiento del cursor
     document.addEventListener("mousemove", (e) => {
       cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     });
 
-    // Efecto hover en botones/enlaces
+    // Efecto hover en enlaces y botones
     document.querySelectorAll("a, button").forEach((el) => {
       el.addEventListener("mouseenter", () => {
         cursor.style.transform += " scale(1.6)";
         cursor.style.opacity = "0.5";
       });
+
       el.addEventListener("mouseleave", () => {
         cursor.style.transform = cursor.style.transform.replace(" scale(1.6)", "");
         cursor.style.opacity = "0.7";
       });
     });
 
-    // Cambiar color si el tema es oscuro
+    // Cambiar color según el modo oscuro
     const observer = new MutationObserver(() => {
       const isDark = document.documentElement.classList.contains("dark");
       cursor.style.backgroundColor = isDark ? "#FFFFFF" : "#1D4ED8";
     });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
   });
 </script>

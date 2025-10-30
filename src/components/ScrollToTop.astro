@@ -1,7 +1,17 @@
 <button
   id="scrollTop"
-  class="fixed bottom-6 right-6 bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center opacity-0 scale-0 transition-all duration-300 hover:scale-110 shadow-lg"
   title="Volver arriba"
+  class="
+    fixed bottom-6 right-6
+    flex items-center justify-center
+    w-12 h-12
+    rounded-full
+    bg-primary text-white
+    shadow-lg
+    opacity-0 scale-0
+    transition-all duration-300
+    hover:scale-110
+  "
 >
   ↑
 </button>
@@ -9,15 +19,17 @@
 <script is:inline>
   const btn = document.getElementById("scrollTop");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      btn.classList.add("opacity-100", "scale-100");
-    } else {
-      btn.classList.remove("opacity-100", "scale-100");
-    }
-  });
+  if (btn) {
+    // mostrar / ocultar botón según el scroll
+    window.addEventListener("scroll", () => {
+      const visible = window.scrollY > 400;
+      btn.classList.toggle("opacity-100", visible);
+      btn.classList.toggle("scale-100", visible);
+    });
 
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+    // volver arriba suavemente
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 </script>
