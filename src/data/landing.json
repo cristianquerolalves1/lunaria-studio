@@ -95,12 +95,12 @@
   "title": "Nuestras Redes Sociales",
   "description": "Síguenos y mantente conectado en todas nuestras plataformas. Contenido actualizado, tips y mucho más.",
   "brands": [
-     { "icon": "logo-instagram", "href": "https://instagram.com/luniriastudio_design" },
-    { "icon": "logo-tiktok", "href": "https://tiktok.com/luniriastudio_design" },
-    { "icon": "logo-twitter", "href": "https://x.com/luniriastudio_" },
-    { "icon": "logo-youtube", "href": "https://youtube.com/luniriastudio" },
-    { "icon": "logo-twitch", "href": "https://twitch.tv/cristianquerool" },
-    { "icon": "images-outline", "href": "https://lunariastudio.carrd.co/" }
+    { "label": "Instagram", "icon": "logo-instagram", "href": "https://instagram.com/luniriastudio_design" },
+    { "label": "Tiktok", "icon": "logo-tiktok", "href": "https://tiktok.com/luniriastudio_design" },
+    { "label": "Twitter", "icon": "logo-twitter", "href": "https://x.com/luniriastudio_" },
+    { "label": "Youtube", "icon": "logo-youtube", "href": "https://youtube.com/luniriastudio" },
+    { "label": "Twitch", "icon": "logo-twitch", "href": "https://twitch.tv/cristianquerool" },
+    { "label": "Portfolio", "icon": "images-outline", "href": "https://lunariastudio.carrd.co/" }
   ]
 },
 
