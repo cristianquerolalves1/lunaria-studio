@@ -1,0 +1,20 @@
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirigiendo…</title>
+    <script>
+      const collaborator = "elmohikano";
+
+      fetch("/api/count-visit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ collaborator }),
+      }).finally(() => {
+        window.location.href = "/";
+      });
+    </script>
+  </head>
+  <body>
+    <p>Redirigiendo a la web principal…</p>
+  </body>
+</html>

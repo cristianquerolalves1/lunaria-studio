@@ -1,0 +1,172 @@
+---
+import ProtectedPage from "@/components/ProtectedPage.tsx";
+import ThemeToggle from "@/components/ThemeToggle.astro";
+import VisitsCounter from "@/components/VisitsCounter.tsx";
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/sections/Footer.astro";
+import Header from "@/sections/Header.astro";
+
+
+const meta = {
+  title: "Colaboración Elmohikano | Lunaria Studio",
+  description: "Guía completa para Elmohikano sobre cómo promocionar Lunaria Studio en su canal de Twitch.",
+  lang: "es",
+  charset: "UTF-8",
+};
+
+const recursosStreamer = [
+  { tipo: "Overlay de Twitch", desc: "Banners y logos para colocar en tu directo.", enlace: "#" },
+  { tipo: "Paneles informativos", desc: "Explican la colaboración y el link a la web.", enlace: "#" },
+  { tipo: "Clips y snippets", desc: "Vídeos cortos que puedes compartir durante tu directo.", enlace: "#" },
+  { tipo: "Link directo a la web", desc: "Usa este link personalizado para tus viewers: lunaria-studio.com/elmohikano", enlace: "#" },
+];
+---
+
+<Layout meta={meta}>
+
+
+  <ProtectedPage correctCode="ELMOHIKANO" client:only="solid">
+    <Header />
+	<ThemeToggle />
+
+    <main class="flex flex-col md:flex-row container mx-auto px-6 py-16 md:py-24 max-w-7xl gap-8">
+      <!-- Sidebar / Índice fijo -->
+      <nav class="hidden md:block w-1/4 sticky top-24 self-start">
+        <div class="bg-card p-6 rounded-xl border border-border shadow-sm">
+          <h2 class="font-bold text-lg mb-4">Contenido</h2>
+          <ul class="space-y-2 text-muted-foreground">
+            <li><a href="#bienvenida" class="hover:text-primary">1. Bienvenida</a></li>
+            <li><a href="#objetivo" class="hover:text-primary">2. Objetivo de la colaboración</a></li>
+            <li><a href="#funciones" class="hover:text-primary">3. Funciones de Elmohikano</a></li>
+            <li><a href="#recursos" class="hover:text-primary">4. Recursos disponibles</a></li>
+            <li><a href="#buenas-practicas" class="hover:text-primary">5. Buenas prácticas en el directo</a></li>
+            <li><a href="#medicion" class="hover:text-primary">6. Medición de impacto</a></li>
+            <li><a href="#contacto" class="hover:text-primary">7. Contacto del equipo</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Contenido principal -->
+      <div class="flex-1 space-y-24">
+        <!-- 1. Bienvenida -->
+        <section id="bienvenida" class="prose prose-lg dark:prose-invert max-w-none">
+          <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+            <span class="text-primary text-3xl">1.</span> Bienvenida Elmohikano
+          </h2>
+          <p>¡Hola Elmohikano! Gracias por colaborar con Lunaria Studio. Esta guía te ayudará a sacar el máximo provecho de tu colaboración y mostrar nuestra web a tu audiencia de manera profesional y atractiva.</p>
+          <div class="mt-6 p-6 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg">
+            <h3 class="font-semibold mb-2">Datos de la colaboración</h3>
+            <ul class="list-disc list-inside space-y-1 text-muted-foreground">
+              <li>Puesto: Streamer en Twitch</li>
+              <li>Función: Promocionar la web en directo y avisar a la audiencia</li>
+              <li>Periodo: [Fecha de inicio – Fecha de fin]</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 2. Objetivo de la colaboración -->
+        <section id="objetivo" class="prose prose-lg dark:prose-invert max-w-none">
+          <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+            <span class="text-primary text-3xl">2.</span> Objetivo de la colaboración
+          </h2>
+          <p>El principal objetivo es que tu comunidad conozca nuestra web y se familiarice con Lunaria Studio. Queremos:</p>
+          <div class="mt-6 grid md:grid-cols-3 gap-4">
+            <div class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
+              <h3 class="font-semibold mb-2">Difusión</h3>
+              <p>Promover la web en tus directos y redes sociales.</p>
+            </div>
+            <div class="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
+              <h3 class="font-semibold mb-2">Engagement</h3>
+              <p>Lograr interacción y curiosidad de tu audiencia.</p>
+            </div>
+            <div class="p-4 bg-pink-50 dark:bg-pink-900/20 rounded-lg border border-pink-200 dark:border-pink-800">
+              <h3 class="font-semibold mb-2">Feedback</h3>
+              <p>Recoger impresiones y comentarios de tu comunidad sobre la web.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Funciones de Elmohikano -->
+        <section id="funciones" class="prose prose-lg dark:prose-invert max-w-none">
+          <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+            <span class="text-primary text-3xl">3.</span> Funciones de Elmohikano
+          </h2>
+          <ul class="list-disc list-inside space-y-2 text-muted-foreground">
+            <li>Hablar de la web durante el directo y explicar brevemente qué ofrece.</li>
+            <li>Usar overlays o banners proporcionados para que los viewers vean el link.</li>
+            <li>Invitar a la audiencia a visitar la web y participar en actividades/promociones.</li>
+            <li>Compartir clips o momentos destacados que mencionen la web en redes sociales.</li>
+          </ul>
+        </section>
+
+        <!-- 4. Recursos disponibles -->
+        <section id="recursos" class="prose prose-lg dark:prose-invert max-w-none">
+          <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+            <span class="text-primary text-3xl">4.</span> Recursos disponibles
+          </h2>
+          <p>Aquí tienes todo lo que puedes usar en tus directos para promocionar la web:</p>
+          <table class="w-full text-left border-collapse border border-border rounded-lg overflow-hidden">
+            <thead class="bg-primary/10 dark:bg-primary/20">
+              <tr>
+                <th class="p-3 font-semibold border-b border-border">Recurso</th>
+                <th class="p-3 font-semibold border-b border-border">Descripción</th>
+                <th class="p-3 font-semibold border-b border-border">Enlace</th>
+              </tr>
+            </thead>
+            <tbody class="text-muted-foreground">
+              {recursosStreamer.map(r => (
+                <tr class="hover:bg-primary/5 dark:hover:bg-primary/10">
+                  <td class="p-3 border-b border-border">{r.tipo}</td>
+                  <td class="p-3 border-b border-border">{r.desc}</td>
+                  <td class="p-3 border-b border-border"><a href={r.enlace} class="text-primary underline">Ver recurso</a></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+
+        <!-- 5. Buenas prácticas en el directo -->
+        <section id="buenas-practicas" class="prose prose-lg dark:prose-invert max-w-none">
+          <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+            <span class="text-primary text-3xl">5.</span> Buenas prácticas en el directo
+          </h2>
+          <ul class="list-disc list-inside space-y-2 text-muted-foreground">
+            <li>Usar overlays y banners durante momentos clave del directo.</li>
+            <li>Mencionar la web de forma natural, integrándolo con tu contenido.</li>
+            <li>Invitar a la comunidad a interactuar y dar feedback.</li>
+            <li>Evitar spam: mejor una mención clara y bien colocada que repetir constantemente.</li>
+          </ul>
+        </section>
+
+        <!-- 6. Medición de impacto -->
+        <section id="medicion" class="prose prose-lg dark:prose-invert max-w-none">
+          <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+            <span class="text-primary text-3xl">6.</span> Medición de impacto
+          </h2>
+          <p>Número de visitas provenientes de tu link personalizado:</p>
+          <VisitsCounter
+            client:only="solid"
+            counterId="cristians-team-1491/lunar"
+            token="ut_PTdlCSLxqj1buSOFCzMlMKdH0jyqCoUf7AHaCWxh"
+          />
+        </section>
+
+        <!-- 7. Contacto del equipo -->
+        <section id="contacto" class="prose prose-lg dark:prose-invert max-w-none">
+          <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+            <span class="text-primary text-3xl">7.</span> Contacto del equipo
+          </h2>
+          <div class="pl-8 p-6 bg-card border rounded-xl">
+            <p><strong>Email:</strong> <a href="mailto:holalunariastudio@proton.me" class="text-primary underline">holalunariastudio@proton.me</a></p>
+            <p><strong>Teléfono:</strong> <a href="tel:+34641160301" class="text-primary underline">+34 641 16 03 00</a></p>
+            <p class="mt-4 text-sm text-muted-foreground">
+              Respuesta garantizada en 24-48 horas hábiles.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <Footer />
+  </ProtectedPage>
+</Layout>
