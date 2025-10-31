@@ -1,41 +1,5 @@
 ---
 import SectionTitle from "@/components/SectionTitle.astro";
-
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
-
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { Accept: 'application/json' }
-    });
-
-    if (res.ok) {
-      const ip = await (await fetch('https://api.ipify.org?format=json')).json().then(r => r.ip);
-      await fetch('/api/log-contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: data.get('name'),
-          email: data.get('email'),
-          message: data.get('message'),
-          ip
-        })
-      });
-
-      const msg = document.createElement('p');
-      msg.textContent = '¡Enviado! Te respondemos en <24h';
-      msg.className = 'mt-6 text-center text-green-400 font-bold text-lg';
-      form.after(msg);
-      form.reset();
-    }
-  } catch (err) {
-    alert('Error de conexión');
-  }
-};
 ---
 
 <section
@@ -52,8 +16,6 @@ const handleSubmit = async (e) => {
   <form
     action="https://formspree.io/f/mldowldp"
     method="POST"
-    client:only="astro"
-    on:submit|preventDefault={handleSubmit}
     class="mt-16 w-[90%] max-w-2xl flex flex-col gap-6
            p-10 rounded-2xl
            backdrop-blur-xl bg-white/30 dark:bg-black/30
@@ -61,8 +23,10 @@ const handleSubmit = async (e) => {
            shadow-[0_0_40px_rgba(255,255,255,0.15)]
            transition-all duration-500 hover:shadow-[0_0_60px_rgba(255,255,255,0.25)]"
   >
-    <input type="hidden" name="_subject" value="Nuevo mensaje desde tu web" />
+    <!-- Campo oculto (opcional, para identificar formulario) -->
+    <input type="hidden" name="_subject" value="Nuevo mensaje desde tu web 🚀" />
 
+    <!-- Nombre -->
     <div class="flex flex-col">
       <label for="name" class="text-lg mb-2 font-medium">Nombre</label>
       <input
@@ -76,6 +40,7 @@ const handleSubmit = async (e) => {
       />
     </div>
 
+    <!-- Correo -->
     <div class="flex flex-col">
       <label for="email" class="text-lg mb-2 font-medium">Correo electrónico</label>
       <input
@@ -89,6 +54,7 @@ const handleSubmit = async (e) => {
       />
     </div>
 
+    <!-- Mensaje -->
     <div class="flex flex-col">
       <label for="message" class="text-lg mb-2 font-medium">Mensaje</label>
       <textarea
@@ -102,6 +68,7 @@ const handleSubmit = async (e) => {
       ></textarea>
     </div>
 
+    <!-- Botón -->
     <button
       type="submit"
       class="mt-6 py-4 text-lg font-semibold text-white rounded-xl
@@ -111,7 +78,7 @@ const handleSubmit = async (e) => {
              hover:scale-[1.02] active:scale-95
              transition-all duration-500"
     >
-      Enviar mensaje
+      Enviar mensaje ✉️
     </button>
   </form>
 </section>

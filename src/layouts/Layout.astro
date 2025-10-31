@@ -1,7 +1,6 @@
 ---
 import Background from "@/components/Background.astro";
 import ScrollToTop from "@/components/ScrollToTop.astro";
-import CookieBanner from "@/components/CookieBanner.astro";
 import type { Meta } from "@/config/landing.interface";
 import "@fontsource-variable/rubik";
 
@@ -15,7 +14,7 @@ const {
     description: "Estudio creativo premium especializado en diseño, branding y desarrollo web.",
     lang: "es",
     charset: "UTF-8",
-    ldJson: null
+    ldJson: null // Correcto: null es permitido por el tipo
   }
 } = Astro.props;
 
@@ -59,9 +58,6 @@ const ldJson = meta?.ldJson ? JSON.stringify(meta.ldJson) : null;
     <Background />
     <slot />
     <ScrollToTop />
-
-    <!-- BANNER DE COOKIES (AÑADIDO) -->
-    <CookieBanner client:load />
   </body>
 </html>
 
