@@ -1,0 +1,252 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Footer from "@/sections/Footer.astro";
+import Header from "@/sections/Header.astro";
+
+const meta = {
+  title: "Política de Cookies | Lunaria Studio",
+  description: "Cómo usamos cookies para mejorar tu experiencia. Tipos, propósitos, gestión y control total.",
+  lang: "es",
+  charset: "UTF-8",
+};
+---
+
+<Layout meta={meta}>
+  <Header />
+
+  <main class="container mx-auto px-6 py-16 md:py-24 max-w-5xl">
+    <!-- Título principal -->
+    <header class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent">
+        Política de Cookies
+      </h1>
+      <p class="mt-4 text-lg text-muted-foreground">
+        Última actualización: <time datetime="2025-10-31">31 de octubre de 2025</time>
+      </p>
+    </header>
+
+    <!-- Introducción -->
+    <section class="prose prose-lg dark:prose-invert max-w-none mb-16">
+      <p class="lead text-xl">
+        En <strong>Lunaria Studio</strong>, usamos cookies y tecnologías similares para mejorar tu experiencia en <a href="https://lunariastudio.com" class="underline">lunariastudio.com</a>. Esta política explica qué son, cómo las usamos, y cómo puedes gestionarlas.
+      </p>
+      <p>
+        Al continuar navegando, aceptas el uso de cookies según esta política. Puedes retirar tu consentimiento en cualquier momento.
+      </p>
+    </section>
+
+    <!-- Secciones -->
+    <div class="space-y-16">
+
+      <!-- 1. ¿Qué son las cookies? -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-primary text-3xl">1.</span>
+          ¿Qué son las cookies?
+        </h2>
+        <div class="space-y-6 pl-8">
+          <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo (ordenador, móvil, tablet) cuando visitas un sitio web.</p>
+          <p>Sirven para:</p>
+          <ul class="list-disc list-inside space-y-1 text-muted-foreground">
+            <li>Recordar tus preferencias (idioma, tema).</li>
+            <li>Analizar cómo usas el sitio para mejorarlo.</li>
+            <li>Ofrecer funciones personalizadas.</li>
+          </ul>
+          <p class="mt-4 italic">
+            <strong>No contienen virus ni recopilan datos personales sin tu consentimiento.</strong>
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. Tipos de cookies que usamos -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-primary text-3xl">2.</span>
+          Tipos de cookies que usamos
+        </h2>
+        <div class="pl-8">
+          <ul class="space-y-4">
+            <li class="flex gap-3">
+              <ion-icon name="checkmark-circle" class="text-green-500 mt-1 text-xl"></ion-icon>
+              <span><strong>Esenciales:</strong> Necesarias para que el Sitio funcione correctamente.</span>
+            </li>
+            <li class="flex gap-3">
+              <ion-icon name="checkmark-circle" class="text-green-500 mt-1 text-xl"></ion-icon>
+              <span><strong>De rendimiento:</strong> Recopilan datos anónimos sobre el uso del Sitio.</span>
+            </li>
+            <li class="flex gap-3">
+              <ion-icon name="checkmark-circle" class="text-green-500 mt-1 text-xl"></ion-icon>
+              <span><strong>Funcionales:</strong> Recuerdan tus elecciones (ej. modo oscuro).</span>
+            </li>
+            <li class="flex gap-3">
+              <ion-icon name="checkmark-circle" class="text-green-500 mt-1 text-xl"></ion-icon>
+              <span><strong>Analíticas:</strong> Miden tráfico y comportamiento (Google Analytics).</span>
+            </li>
+          </ul>
+          <p class="mt-4 text-sm text-muted-foreground">
+            <strong>No usamos cookies publicitarias, de remarketing ni de terceros para tracking comercial.</strong>
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Cookies específicas -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-primary text-3xl">3.</span>
+          Cookies específicas
+        </h2>
+        <div class="pl-8 space-y-4">
+          <p>Estas son las cookies que utilizamos en el Sitio:</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b">
+                  <th class="pb-2 font-semibold">Nombre</th>
+                  <th class="pb-2 font-semibold">Tipo</th>
+                  <th class="pb-2 font-semibold">Propósito</th>
+                  <th class="pb-2 font-semibold">Duración</th>
+                  <th class="pb-2 font-semibold">Proveedor</th>
+                </tr>
+              </thead>
+              <tbody class="text-muted-foreground">
+                <tr class="border-b">
+                  <td class="py-2 font-mono">theme</td>
+                  <td>Funcional</td>
+                  <td>Recuerda tu preferencia de tema (claro/oscuro)</td>
+                  <td>1 año</td>
+                  <td>Lunaria Studio</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-2 font-mono">_ga</td>
+                  <td>Analítica</td>
+                  <td>Distinguir usuarios únicos (anónimo)</td>
+                  <td>2 años</td>
+                  <td>Google</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-2 font-mono">_gid</td>
+                  <td>Analítica</td>
+                  <td>Distinguir usuarios por sesión</td>
+                  <td>24 horas</td>
+                  <td>Google</td>
+                </tr>
+                <tr class="border-b">
+                  <td class="py-2 font-mono">_gat</td>
+                  <td>Analítica</td>
+                  <td>Limitar tasa de solicitudes</td>
+                  <td>1 minuto</td>
+                  <td>Google</td>
+                </tr>
+                <tr>
+                  <td class="py-2 font-mono">session_id</td>
+                  <td>Esencial</td>
+                  <td>Mantiene tu sesión activa</td>
+                  <td>Sesión</td>
+                  <td>Lunaria Studio</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Gestión de cookies -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-primary text-3xl">4.</span>
+          Gestión de cookies
+        </h2>
+        <div class="pl-8">
+          <p>Puedes controlar y eliminar cookies en cualquier momento:</p>
+          <ul class="list-disc list-inside mt-3 space-y-1 text-muted-foreground">
+            <li><strong>Navegador:</strong> Configuración → Privacidad → Cookies.</li>
+            <li><strong>Banner de consentimiento:</strong> Al entrar al Sitio (puedes cambiar tus preferencias).</li>
+            <li><strong>Herramientas externas:</strong> Ghostery, uBlock Origin, Privacy Badger.</li>
+          </ul>
+          <p class="mt-4 italic">
+            <strong>Bloquear cookies esenciales puede afectar el funcionamiento del Sitio.</strong>
+          </p>
+        </div>
+      </section>
+
+      <!-- 5. Cookies de terceros -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-primary text-3xl">5.</span>
+          Cookies de terceros
+        </h2>
+        <div class="pl-8">
+          <p>Usamos servicios de terceros que pueden colocar cookies:</p>
+          <ul class="space-y-3 mt-4">
+            <li class="flex gap-3">
+              <span class="text-primary font-bold">→</span>
+              <span><strong>Google Analytics:</strong> Análisis anónimo de tráfico.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-primary font-bold">→</span>
+              <span><strong>Vercel Analytics:</strong> Rendimiento del hosting.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-primary font-bold">→</span>
+              <span><strong>Resend:</strong> Envío de emails (solo en formularios).</span>
+            </li>
+          </ul>
+          <p class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+            <strong>Políticas de terceros:</strong><br />
+            <a href="https://policies.google.com/privacy" class="underline font-medium">Google</a> | 
+            <a href="https://vercel.com/legal/privacy" class="underline font-medium">Vercel</a> | 
+            <a href="https://resend.com/privacy" class="underline font-medium">Resend</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- 6. Consentimiento -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-primary text-3xl">6.</span>
+          Consentimiento
+        </h2>
+        <div class="pl-8">
+          <p class="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+            <strong>Tu consentimiento se infiere al continuar navegando tras ver el banner de cookies.</strong><br />
+            Puedes retirar el consentimiento en cualquier momento borrando las cookies de tu navegador.
+          </p>
+        </div>
+      </section>
+
+      <!-- 7. Actualizaciones -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-primary text-3xl">7.</span>
+          Actualizaciones de esta política
+        </h2>
+        <div class="pl-8">
+          <p>
+            Podemos actualizar esta política para reflejar cambios en nuestras prácticas o en la ley.
+          </p>
+          <p class="mt-3">
+            <strong>Versión actual:</strong> 2.0 | 31 de octubre de 2025
+          </p>
+        </div>
+      </section>
+
+      <!-- 8. Contacto -->
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-3">
+          <span class="text-primary text-3xl">8.</span>
+          Contáctanos
+        </h2>
+        <div class="pl-8 p-6 bg-card border rounded-xl">
+          <p><strong>Email:</strong> <a href="mailto:holalunariastudio@proton.me" class="text-primary underline">holalunariastudio@proton.me</a></p>
+          <p><strong>Dirección:</strong> Calle de Plaza del Mercadal, 08030, Barcelona, España</p>
+          <p class="mt-4 text-sm text-muted-foreground">
+            Respuesta garantizada en 48 horas hábiles.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

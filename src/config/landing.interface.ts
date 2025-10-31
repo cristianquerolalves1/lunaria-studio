@@ -76,7 +76,6 @@ export interface Brand {
   href: string;
 }
 
-
 export interface PricingData {
   title: string;
   tiers: Tier[];
@@ -105,7 +104,6 @@ export interface ContactData {
   };
 }
 
-
 export interface Price {
   amount: string;
   period?: string;
@@ -116,7 +114,7 @@ export interface Meta {
   description: string;
   lang: string;
   charset: string;
-  ldJson: LdJson;
+  ldJson?: LdJson | null; // <--- ahora opcional
 }
 
 export interface LdJson {
@@ -150,4 +148,3 @@ export type Icon =
   | "VueIcon"
   | "VercelIcon"
   | "NetlifyIcon";
-  
