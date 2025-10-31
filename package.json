@@ -19,6 +19,7 @@
     "@supabase/supabase-js": "^2.78.0",
     "astro": "^4.4.4",
     "astro-robots-txt": "^1.0.0",
+    "fs": "0.0.1-security",
     "ionicons": "^8.0.13",
     "tailwindcss": "^3.4.1",
     "tsparticles-confetti": "^2.12.0",

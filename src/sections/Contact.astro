@@ -14,6 +14,7 @@ import SectionTitle from "@/components/SectionTitle.astro";
   </p>
 
   <form
+    id="contact-form"
     action="https://formspree.io/f/mldowldp"
     method="POST"
     class="mt-16 w-[90%] max-w-2xl flex flex-col gap-6
@@ -23,7 +24,6 @@ import SectionTitle from "@/components/SectionTitle.astro";
            shadow-[0_0_40px_rgba(255,255,255,0.15)]
            transition-all duration-500 hover:shadow-[0_0_60px_rgba(255,255,255,0.25)]"
   >
-    <!-- Campo oculto (opcional, para identificar formulario) -->
     <input type="hidden" name="_subject" value="Nuevo mensaje desde tu web 🚀" />
 
     <!-- Nombre -->
@@ -82,6 +82,36 @@ import SectionTitle from "@/components/SectionTitle.astro";
     </button>
   </form>
 </section>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    if (!form) return;
+
+    form.addEventListener("submit", async (e) => {
+      // Guardar datos en localStorage
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      localStorage.setItem("lastFormEntry", JSON.stringify(data));
+
+      // Enviar a API interna (JSON)
+      try {
+        fetch("/api/save", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+      } catch (err) {
+        console.error("Error guardando en base de datos:", err);
+      }
+
+      // NO hacemos preventDefault(), para que Formspree funcione normalmente
+    });
+  });
+</script>
+
+
+
 
 <style>
   #contact-section {
