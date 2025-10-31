@@ -92,8 +92,8 @@
 
 
 "brandsData": {
-  "title": "Nuestros partners",
-  "description": "Trabajamos con las mejores marcas",
+  "title": "Links de Interés",
+  "description": "Explora aquí una lista de enlaces útiles relacionados con nuestro contenido. Cada uno te llevará a recursos externos donde podrás obtener más información, herramientas o servicios de interés.",
   "brands": [
     { "label": "Instagram", "icon": "logo-instagram", "href": "https://instagram.com/lunariastudio_design" },
     { "label": "TikTok", "icon": "logo-tiktok", "href": "https://tiktok.com/lunariastudio_design" },
