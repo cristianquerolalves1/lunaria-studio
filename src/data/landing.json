@@ -31,7 +31,7 @@
       { "label": "Servicios", "href": "#services-section" },
       { "label": "Por qué elegirnos", "href": "#adventajes-section" },
       { "label": "Planes / Precios", "href": "#plans-section" },
-      { "label": "Contacto", "href": "mailto:holalunariastudio@proton.me" }
+      { "label": "Contacto", "href": "#contact-section" }
     ]
   },
 
@@ -180,6 +180,10 @@
 {
   "label": "Términos y Condiciones",
   "href": "/terms-and-conditions"
+},
+{
+  "label": "Términos y Condiciones",
+  "href": "/cookies-policy"
 }
 
     ],
