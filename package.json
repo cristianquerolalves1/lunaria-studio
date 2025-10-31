@@ -15,6 +15,7 @@
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/rubik": "^5.0.21",
+    "@supabase/supabase-js": "^2.78.0",
     "astro": "^4.4.4",
     "astro-robots-txt": "^1.0.0",
     "ionicons": "^8.0.13",

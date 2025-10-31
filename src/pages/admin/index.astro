@@ -1,0 +1,87 @@
+---
+import { createClient } from '@supabase/supabase-js';
+
+const password = Astro.url.searchParams.get('x-admin-pass');
+if (password !== 'lunaria2025') return Astro.redirect('/');
+
+const supabase = createClient(
+  import.meta.env.PUBLIC_SUPABASE_URL,
+  import.meta.env.SUPABASE_SERVICE_ROLE_KEY
+);
+
+const { data: contacts } = await supabase.from('contacts').select('*').order('created_at', { ascending: false });
+const { data: logs } = await supabase.from('cookie_logs').select('*').order('created_at', { ascending: false }).limit(100);
+---
+
+<!DOCTYPE html>
+<html class="dark">
+<head>
+  <title>Admin - Lunaria Studio</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body class="bg-black text-white min-h-screen font-mono">
+  <div class="container mx-auto p-6">
+    <h1 class="text-5xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-8">ADMIN PANEL</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+      <div class="neo-card p-6"><p class="text-cyan-400 text-sm">Contactos</p><p class="text-3xl font-bold">{contacts?.length || 0}</p></div>
+      <div class="neo-card p-6"><p class="text-green-400 text-sm">Aceptadas</p><p class="text-3xl font-bold">{logs?.filter(l => l.consent_type === 'all').length || 0}</p></div>
+      <div class="neo-card p-6"><p class="text-yellow-400 text-sm">Esenciales</p><p class="text-3xl font-bold">{logs?.filter(l => l.consent_type === 'essential').length || 0}</p></div>
+      <div class="neo-card p-6"><p class="text-red-400 text-sm">Rechazadas</p><p class="text-3xl font-bold">{logs?.filter(l => l.consent_type === 'rejected').length || 0}</p></div>
+    </div>
+
+    <div class="neo-card p-6 mb-8">
+      <canvas id="chart"></canvas>
+    </div>
+
+    <div class="neo-card p-6 overflow-x-auto">
+      <h2 class="text-xl font-bold text-cyan-400 mb-4">Últimos Contactos</h2>
+      <table class="w-full text-xs">
+        <thead class="border-b border-white/10">
+          <tr><th class="text-left py-2">Nombre</th><th>Email</th><th>Mensaje</th><th>IP</th><th>Fecha</th></tr>
+        </thead>
+        <tbody>
+          {contacts?.slice(0, 10).map(c => (
+            <tr class="border-b border-white/5 hover:bg-white/5">
+              <td class="py-2">{c.name}</td>
+              <td>{c.email}</td>
+              <td class="truncate max-w-xs">{c.message}</td>
+              <td class="font-mono">{c.ip_address}</td>
+              <td>{new Date(c.created_at).toLocaleString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    new Chart(document.getElementById('chart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Aceptadas', 'Esenciales', 'Rechazadas'],
+        datasets: [{
+          data: [
+            {logs?.filter(l => l.consent_type === 'all').length || 0},
+            {logs?.filter(l => l.consent_type === 'essential').length || 0},
+            {logs?.filter(l => l.consent_type === 'rejected').length || 0}
+          ],
+          backgroundColor: ['#00ffff', '#ff00ff', '#ff0066'],
+          borderWidth: 0
+        }]
+      },
+      options: { plugins: { legend: { labels: { color: 'white' } } } }
+    });
+  </script>
+</body>
+
+<style>
+  .neo-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+  }
+</style>
