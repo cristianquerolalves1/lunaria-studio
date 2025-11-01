@@ -1,4 +1,5 @@
 ---
+// src/pages/portfolio.astro
 import Layout from "@/layouts/Layout.astro";
 import Footer from "@/sections/Footer.astro";
 import Header from "@/sections/Header.astro";
@@ -63,9 +64,7 @@ const projects = [
   <main class="container mx-auto px-6 pt-32 md:pt-40 pb-20 max-w-6xl">
     <!-- Hero -->
     <section class="text-center mb-20">
-      <h1
-        class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-      >
+      <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
         Portfolio de Diseño
       </h1>
       <p class="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -76,9 +75,7 @@ const projects = [
     <!-- Galería -->
     <section id="gallery" class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
       {projects.map((project, index) => (
-        <article
-          class="group bg-card border rounded-2xl overflow-hidden shadow hover:shadow-lg transition-shadow duration-300"
-        >
+        <article class="group bg-card border rounded-2xl overflow-hidden shadow hover:shadow-lg transition-shadow duration-300">
           <div class="overflow-hidden cursor-pointer">
             <img
               src={project.image}
@@ -86,7 +83,7 @@ const projects = [
               loading="lazy"
               class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
               data-index={index}
-              onclick="openLightbox(event)"
+              onclick="openLightbox(this)"
             />
           </div>
           <div class="p-6">
@@ -111,7 +108,7 @@ const projects = [
         href="/#contact-section"
         class="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:opacity-90 transition"
       >
-        Contáctanos →
+        Contáctanos
       </a>
     </section>
   </main>
@@ -120,6 +117,7 @@ const projects = [
   <div
     id="lightbox"
     class="fixed inset-0 bg-black/80 backdrop-blur-xl hidden items-center justify-center z-50 transition-opacity duration-300"
+    onclick="closeLightbox()"
   >
     <div
       class="relative max-w-5xl w-full flex flex-col items-center px-6 select-none"
@@ -132,26 +130,14 @@ const projects = [
         class="max-h-[75vh] w-auto object-contain rounded-3xl shadow-2xl border border-white/10 opacity-0 scale-95 transition-all duration-300"
       />
 
-      <!-- Card de descripción estilo iOS glass -->
-   <!-- Card de descripción estilo iOS glass mejorado -->
-<div
-  id="lightboxCard"
-  class="absolute bottom-8 left-1/2 -translate-x-1/2
-         bg-white/20 backdrop-blur-2xl border border-white/30
-         text-white max-w-md w-[90%] p-6 rounded-3xl shadow-2xl
-         opacity-0 translate-y-4 transition-all duration-500
-         bg-gradient-to-br from-white/15 via-white/10 to-white/5
-         ring-1 ring-white/10"
->
-  <h3
-    id="lightboxTitle"
-    class="text-2xl font-semibold mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"
-  ></h3>
-  <p
-    id="lightboxDesc"
-    class="text-base leading-relaxed opacity-90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
-  ></p>
-</div>
+      <!-- Card de descripción -->
+      <div
+        id="lightboxCard"
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/20 backdrop-blur-2xl border border-white/30 text-white max-w-md w-[90%] p-6 rounded-3xl shadow-2xl opacity-0 translate-y-4 transition-all duration-500 bg-gradient-to-br from-white/15 via-white/10 to-white/5 ring-1 ring-white/10"
+      >
+        <h3 id="lightboxTitle" class="text-2xl font-semibold mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]"></h3>
+        <p id="lightboxDesc" class="text-base leading-relaxed opacity-90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"></p>
+      </div>
 
       <!-- Navegación -->
       <button
@@ -159,14 +145,14 @@ const projects = [
         class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white text-4xl font-light hover:opacity-80 transition"
         onclick="changeImage(-1)"
       >
-        &#10094;
+        Left Arrow
       </button>
       <button
         id="nextBtn"
         class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 text-white text-4xl font-light hover:opacity-80 transition"
         onclick="changeImage(1)"
       >
-        &#10095;
+        Right Arrow
       </button>
 
       <!-- Cerrar -->
@@ -175,7 +161,7 @@ const projects = [
         class="absolute top-6 right-8 text-white text-4xl font-light hover:opacity-70"
         onclick="closeLightbox()"
       >
-        &times;
+        Close
       </button>
     </div>
   </div>
@@ -183,40 +169,16 @@ const projects = [
   <Footer />
 </Layout>
 
-<!-- Script Lightbox -->
+<!-- Script Lightbox (is:inline → NO TypeScript) -->
 <script is:inline>
- const projectData = [
-  {
-    title: "Ilustración de personaje — Fantasma Victoriano a Caballo",
-    image: "/portfolio/images/1.jpg",
-    description: "Personaje espectral femenino en atuendo victoriano, montado en corcel etéreo con paleta nocturna y detalles góticos.",
-  },
-  {
-    title: "Ilustración romántica — Abrazo en el Prado",
-    image: "/portfolio/images/2.jpg",
-    description: "Escena costumbrista de pareja en entorno natural, con énfasis en expresiones afectivas y paleta primaveral.",
-  },
-  {
-    title: "Diseño arquitectónico — Residencia Mágica Turquesa",
-    image: "/portfolio/images/3.jpg",
-    description: "Fachada de vivienda fantástica en tonos pastel, con elementos neoclásicos y jardinería integrada.",
-  },
-  {
-    title: "Ilustración mitológica — Diosa de los Cisnes",
-    image: "/portfolio/images/4.jpg",
-    description: "Representación alegórica de deidad acuática en pose serena, acompañada de cisnes y simbolismo floral.",
-  },
-  {
-    title: "Diseño gráfico — Chronic in Your System?",
-    image: "/portfolio/images/5.jpg",
-    description: "Portada conceptual con temática cannábica, uso de tipografía expresiva y patrón repetitivo vegetal.",
-  },
-  {
-    title: "Ilustración de moda — Diva Zebra Print",
-    image: "/portfolio/images/6.jpg",
-    description: "Personaje estilizado con estampado animal print, paleta contrastada y pose editorial de alta costura.",
-  },
-];
+  const projectData = [
+    { title: "Ilustración de personaje — Fantasma Victoriano a Caballo", image: "/portfolio/images/1.jpg", description: "Personaje espectral femenino en atuendo victoriano, montado en corcel etéreo con paleta nocturna y detalles góticos." },
+    { title: "Ilustración romántica — Abrazo en el Prado", image: "/portfolio/images/2.jpg", description: "Escena costumbrista de pareja en entorno natural, con énfasis en expresiones afectivas y paleta primaveral." },
+    { title: "Diseño arquitectónico — Residencia Mágica Turquesa", image: "/portfolio/images/3.jpg", description: "Fachada de vivienda fantástica en tonos pastel, con elementos neoclásicos y jardinería integrada." },
+    { title: "Ilustración mitológica — Diosa de los Cisnes", image: "/portfolio/images/4.jpg", description: "Representación alegórica de deidad acuática en pose serena, acompañada de cisnes y simbolismo floral." },
+    { title: "Diseño gráfico — Chronic in Your System?", image: "/portfolio/images/5.jpg", description: "Portada conceptual con temática cannábica, uso de tipografía expresiva y patrón repetitivo vegetal." },
+    { title: "Ilustración de moda — Diva Zebra Print", image: "/portfolio/images/6.jpg", description: "Personaje estilizado con estampado animal print, paleta contrastada y pose editorial de alta costura." },
+  ];
 
   let currentIndex = 0;
   const lightbox = document.getElementById("lightbox");
@@ -225,8 +187,8 @@ const projects = [
   const descEl = document.getElementById("lightboxDesc");
   const card = document.getElementById("lightboxCard");
 
-  function openLightbox(e) {
-    currentIndex = parseInt(e.target.dataset.index);
+  function openLightbox(el) {
+    currentIndex = parseInt(el.dataset.index);
     updateLightbox();
     lightbox.classList.remove("hidden");
     lightbox.classList.add("flex");
@@ -247,8 +209,8 @@ const projects = [
     }, 300);
   }
 
-  function changeImage(direction) {
-    currentIndex = (currentIndex + direction + projectData.length) % projectData.length;
+  function changeImage(dir) {
+    currentIndex = (currentIndex + dir + projectData.length) % projectData.length;
     updateLightbox(true);
   }
 
@@ -266,8 +228,6 @@ const projects = [
       }, 80);
     }, animated ? 150 : 0);
   }
-
-  lightbox.addEventListener("click", closeLightbox);
 
   document.addEventListener("keydown", (e) => {
     if (lightbox.classList.contains("hidden")) return;

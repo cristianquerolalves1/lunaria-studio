@@ -22,8 +22,12 @@ export default function VisitsCounter({ collaborator }: Props) {
 
   onMount(() => {
     load();
-    const id = setInterval(load, 30000); // cada 30 segundos
-    return () => clearInterval(id);
+
+    // Usa window.setInterval → devuelve number (Node & DOM compatible)
+    const id = window.setInterval(load, 30000);
+
+    // Limpia con window.clearInterval
+    return () => window.clearInterval(id);
   });
 
   return (
