@@ -6,7 +6,6 @@ import Layout from "@/layouts/Layout.astro";
 import Footer from "@/sections/Footer.astro";
 import Header from "@/sections/Header.astro";
 
-
 const meta = {
   title: "Colaboración Elmohikano | Lunaria Studio",
   description: "Guía completa para Elmohikano sobre cómo promocionar Lunaria Studio en su canal de Twitch.",
@@ -20,17 +19,18 @@ const recursosStreamer = [
   { tipo: "Clips y snippets", desc: "Vídeos cortos que puedes compartir durante tu directo.", enlace: "#" },
   { tipo: "Link directo a la web", desc: "Usa este link personalizado para tus viewers: lunaria-studio.com/elmohikano", enlace: "#" },
 ];
+
+// Nombre del colaborador para el contador
+const collaborator = "elmohikano";
 ---
 
 <Layout meta={meta}>
-
-
   <ProtectedPage correctCode="ELMOHIKANO" client:only="solid">
     <Header />
-	<ThemeToggle />
+    <ThemeToggle />
 
     <main class="flex flex-col md:flex-row container mx-auto px-6 py-16 md:py-24 max-w-7xl gap-8">
-      <!-- Sidebar / Índice fijo -->
+      <!-- Sidebar -->
       <nav class="hidden md:block w-1/4 sticky top-24 self-start">
         <div class="bg-card p-6 rounded-xl border border-border shadow-sm">
           <h2 class="font-bold text-lg mb-4">Contenido</h2>
@@ -48,7 +48,7 @@ const recursosStreamer = [
 
       <!-- Contenido principal -->
       <div class="flex-1 space-y-24">
-        <!-- 1. Bienvenida -->
+        <!-- Secciones informativas -->
         <section id="bienvenida" class="prose prose-lg dark:prose-invert max-w-none">
           <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
             <span class="text-primary text-3xl">1.</span> Bienvenida Elmohikano
@@ -64,7 +64,6 @@ const recursosStreamer = [
           </div>
         </section>
 
-        <!-- 2. Objetivo de la colaboración -->
         <section id="objetivo" class="prose prose-lg dark:prose-invert max-w-none">
           <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
             <span class="text-primary text-3xl">2.</span> Objetivo de la colaboración
@@ -86,7 +85,6 @@ const recursosStreamer = [
           </div>
         </section>
 
-        <!-- 3. Funciones de Elmohikano -->
         <section id="funciones" class="prose prose-lg dark:prose-invert max-w-none">
           <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
             <span class="text-primary text-3xl">3.</span> Funciones de Elmohikano
@@ -99,7 +97,6 @@ const recursosStreamer = [
           </ul>
         </section>
 
-        <!-- 4. Recursos disponibles -->
         <section id="recursos" class="prose prose-lg dark:prose-invert max-w-none">
           <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
             <span class="text-primary text-3xl">4.</span> Recursos disponibles
@@ -125,7 +122,6 @@ const recursosStreamer = [
           </table>
         </section>
 
-        <!-- 5. Buenas prácticas en el directo -->
         <section id="buenas-practicas" class="prose prose-lg dark:prose-invert max-w-none">
           <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
             <span class="text-primary text-3xl">5.</span> Buenas prácticas en el directo
@@ -138,20 +134,15 @@ const recursosStreamer = [
           </ul>
         </section>
 
-        <!-- 6. Medición de impacto -->
+        <!-- 6. Medición de impacto con contador -->
         <section id="medicion" class="prose prose-lg dark:prose-invert max-w-none">
           <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
             <span class="text-primary text-3xl">6.</span> Medición de impacto
           </h2>
           <p>Número de visitas provenientes de tu link personalizado:</p>
-          <VisitsCounter
-            client:only="solid"
-            counterId="cristians-team-1491/lunar"
-            token="ut_PTdlCSLxqj1buSOFCzMlMKdH0jyqCoUf7AHaCWxh"
-          />
+          <VisitsCounter client:only="solid" collaborator={collaborator} />
         </section>
 
-        <!-- 7. Contacto del equipo -->
         <section id="contacto" class="prose prose-lg dark:prose-invert max-w-none">
           <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
             <span class="text-primary text-3xl">7.</span> Contacto del equipo

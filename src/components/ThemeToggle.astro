@@ -5,7 +5,7 @@ const clientOnly = true;
 <button
   id="theme-toggle"
   aria-label="Cambiar tema"
-  class="fixed top-6 right-6 z-50 group w-12 h-12 md:w-14 md:h-14 rounded-full
+  class="fixed top-6 right-20 z-50 group w-12 h-12 md:w-14 md:h-14 rounded-full
          backdrop-blur-xl bg-white/20 dark:bg-black/20
          border border-white/40 dark:border-black/40
          shadow-[0_0_25px_rgba(255,255,255,0.2)] 
@@ -56,7 +56,7 @@ const clientOnly = true;
     }
   }
 
-  // Carga el tema guardado en localStorage
+  // Cargar tema guardado
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") root.classList.add("dark");
   else if (savedTheme === "light") root.classList.remove("dark");
