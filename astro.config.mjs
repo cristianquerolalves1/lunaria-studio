@@ -2,7 +2,7 @@ import react from '@astrojs/react';
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 
