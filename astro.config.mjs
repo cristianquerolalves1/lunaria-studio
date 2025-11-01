@@ -11,12 +11,19 @@ export default defineConfig({
   site: import.meta.env.DEV
     ? "http://localhost:4321"
     : "https://lunaria-studio.vercel.app",
-	 adapter: vercel(),
+    
+  // Config para sitio estático
+  output: "static",
+
+  // Adapter Vercel
+  adapter: vercel(),
+
+  // Integraciones
   integrations: [
     tailwind(),
     sitemap(),
     robotsTxt(),
     solid(),
-	react() // <-- Aquí registras la integración de SolidJS
+    react(),
   ],
 });
