@@ -83,32 +83,6 @@ import SectionTitle from "@/components/SectionTitle.astro";
   </form>
 </section>
 
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contact-form") as HTMLFormElement | null;
-    if (!form) return;
-
-    form.addEventListener("submit", async (e) => {
-      // Guardar datos en localStorage
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      localStorage.setItem("lastFormEntry", JSON.stringify(data));
-
-      // Enviar a API interna (JSON)
-      try {
-        fetch("/api/save", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-      } catch (err) {
-        console.error("Error guardando en base de datos:", err);
-      }
-
-      // NO hacemos preventDefault(), para que Formspree funcione normalmente
-    });
-  });
-</script>
 
 
 

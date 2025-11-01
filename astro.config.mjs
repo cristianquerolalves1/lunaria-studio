@@ -6,24 +6,21 @@ import vercel from "@astrojs/vercel";
 import robotsTxt from "astro-robots-txt";
 import { defineConfig } from "astro/config";
 
-// https://astro.build/config
 export default defineConfig({
   site: import.meta.env.DEV
     ? "http://localhost:4321"
     : "https://lunaria-studio.vercel.app",
-    
-  // Config para sitio estático
-  output: "static",
 
-  // Adapter Vercel
-  adapter: vercel(),
+  output: "server", // necesario para tus APIs
+  adapter: vercel({ runtime: "edge" }), // o serverless
 
-  // Integraciones
   integrations: [
     tailwind(),
     sitemap(),
     robotsTxt(),
-    solid(),
-    react(),
+    solid({ include: ["./src/components/**/*.{tsx,jsx}"] }),
+    react({ include: ["./src/components/**/*.{tsx,jsx}"] }),
   ],
+
+  image: {}, // configuración mínima válida para Astro
 });
