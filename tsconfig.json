@@ -6,6 +6,14 @@
       "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["solid-js", "astro/client"],
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ESNext",
+    "skipLibCheck": true,
+    "allowJs": true
   }
 }

@@ -1,38 +1,34 @@
+// src/components/VisitsCounter.tsx
 import { createSignal, onMount } from "solid-js";
+import { supabase } from "../lib/supabase";
 
-interface VisitsCounterProps {
-  collaborator: string; // nombre del colaborador
+interface Props {
+  collaborator: string;
 }
 
-export default function VisitsCounter({ collaborator }: VisitsCounterProps) {
-  const [visits, setVisits] = createSignal<number>(0);
+export default function VisitsCounter({ collaborator }: Props) {
+  const [count, setCount] = createSignal(0);
 
-  const getVisits = async () => {
-    try {
-      const res = await fetch(`/api/count-visit?collaborator=${collaborator}`);
-      const data = await res.json();
-      if (data.count !== undefined) setVisits(data.count);
-    } catch (err) {
-      console.error("Error al obtener visitas:", err);
+  const load = async () => {
+    const { count, error } = await supabase
+      .from("visits")
+      .select("*", { count: "exact", head: true })
+      .eq("collaborator", collaborator);
+
+    if (!error && count !== null) {
+      setCount(count);
     }
   };
 
-  const incrementVisits = async () => {
-    try {
-      await fetch("/api/count-visit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ collaborator }),
-      });
-    } catch (err) {
-      console.error("Error al incrementar visitas:", err);
-    }
-  };
-
-  onMount(async () => {
-    await incrementVisits(); // suma 1 al entrar
-    await getVisits();       // actualiza valor
+  onMount(() => {
+    load();
+    const id = setInterval(load, 30000); // cada 30 segundos
+    return () => clearInterval(id);
   });
 
-  return <span class="font-bold">{visits()} visitas</span>;
+  return (
+    <span class="inline-block min-w-[4rem] font-mono text-6xl tracking-wider">
+      {count().toLocaleString()}
+    </span>
+  );
 }

@@ -30,6 +30,7 @@
       { "label": "Inicio", "href": "#hero-section" },
       { "label": "Servicios", "href": "#services-section" },
       { "label": "Por qué elegirnos", "href": "#adventajes-section" },
+	  { "label": "Portfolio", "href": "/portfolio" },
       { "label": "Planes / Precios", "href": "#plans-section" },
       { "label": "Contacto", "href": "#contact-section" }
     ]
@@ -100,7 +101,7 @@
     { "label": "X", "icon": "logo-twitter", "href": "https://x.com/lunariastudio_" },
     { "label": "YouTube", "icon": "logo-youtube", "href": "https://youtube.com/lunariastudio" },
     { "label": "Twitch", "icon": "logo-twitch", "href": "https://twitch.tv/cristianquerool" },
-    { "label": "Portfolio", "icon": "images-outline", "href": "https://lunariastudio.carrd.co/" }
+    { "label": "Portfolio", "icon": "images-outline", "href": "/portfolio" }
   ]
 },
 

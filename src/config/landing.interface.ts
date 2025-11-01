@@ -64,6 +64,15 @@ export interface Social {
   href: string;
 }
 
+export interface Visit {
+  collaborator: string;
+  ip_hash: string;
+  user_agent: string;
+  page: string;
+}
+
+
+
 export interface BrandsData {
   title: string;
   description: string;
@@ -114,7 +123,7 @@ export interface Meta {
   description: string;
   lang: string;
   charset: string;
-  ldJson?: LdJson | null; // <--- ahora opcional
+  ldJson?: any;
 }
 
 export interface LdJson {
@@ -148,3 +157,6 @@ export type Icon =
   | "VueIcon"
   | "VercelIcon"
   | "NetlifyIcon";
+
+
+  

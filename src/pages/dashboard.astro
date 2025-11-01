@@ -1,0 +1,115 @@
+---
+// src/pages/dashboard.astro
+import ChartComponent from "@/components/ChartComponent.tsx";
+import ProtectedPage from "@/components/ProtectedPage.tsx";
+import VisitsCounter from "@/components/VisitsCounter.tsx";
+import type { Meta } from "@/config/landing.interface";
+import Layout from "@/layouts/Layout.astro";
+import { supabase } from "@/lib/supabase";
+
+const meta: Meta = {
+  title: "Dashboard | Lunaria Studio",
+  description: "Analytics en tiempo real.",
+  lang: "es",
+  charset: "UTF-8"
+};
+
+const { data: visits } = await supabase
+  .from('visits')
+  .select('*')
+  .order('created_at', { ascending: false })
+  .limit(500);
+
+const total = visits?.length || 0;
+const unique = new Set(visits?.map(v => v.hashed_ip)).size || 0;
+
+const byCollab: Record<string, number> = visits
+  ?.reduce((acc, v) => {
+    if (v.collaborator) {
+      acc[v.collaborator] = (acc[v.collaborator] ?? 0) + 1;
+    }
+    return acc;
+  }, {} as Record<string, number>) || {};
+
+const chartData = Object.entries(byCollab).map(([name, visits]) => ({
+  name,
+  visits
+}));
+---
+
+<Layout meta={meta}>
+  <ProtectedPage envKey="DASHBOARD_PASSWORD" client:load>
+    <div class="container mx-auto p-6 max-w-7xl">
+      <h1 class="text-4xl font-bold text-center mb-8">Dashboard Analytics</h1>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-2xl shadow-lg">
+          <p class="text-sm opacity-90">Total</p>
+          <p class="text-3xl font-bold">{total.toLocaleString()}</p>
+        </div>
+        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-2xl shadow-lg">
+          <p class="text-sm opacity-90">IPs Únicas</p>
+          <p class="text-3xl font-bold">{unique}</p>
+        </div>
+        <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-6 rounded-2xl shadow-lg">
+          <p class="text-sm opacity-90">Colaboradores</p>
+          <p class="text-3xl font-bold">{Object.keys(byCollab).length}</p>
+        </div>
+        <div class="bg-gradient-to-br from-pink-500 to-pink-600 text-white p-6 rounded-2xl shadow-lg">
+          <p class="text-sm opacity-90">Hoy</p>
+          <p class="text-3xl font-bold">
+            {visits?.filter(v => new Date(v.created_at).toDateString() === new Date().toDateString()).length || 0}
+          </p>
+        </div>
+      </div>
+
+      <!-- Gráfico con Chart.js -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl mb-10">
+        <h2 class="text-2xl font-bold mb-4">Visitas por Colaborador</h2>
+        <ChartComponent client:load data={chartData} />
+      </div>
+
+      <!-- Elmohikano Live -->
+      <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8 rounded-2xl shadow-xl text-center mb-10">
+        <h2 class="text-2xl font-bold mb-2">Elmohikano</h2>
+        <p class="text-5xl"><VisitsCounter client:load collaborator="elmohikano" /></p>
+      </div>
+
+      <!-- Tabla -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+        <h2 class="text-2xl font-bold p-6 bg-gray-100 dark:bg-gray-900">Últimas 50 Visitas</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th class="px-4 py-3 text-left">IP</th>
+                <th class="px-4 py-3 text-left">Dispositivo</th>
+                <th class="px-4 py-3 text-left">Colaborador</th>
+                <th class="px-4 py-3 text-left">Página</th>
+                <th class="px-4 py-3 text-left">Hora</th>
+              </tr>
+            </thead>
+            <tbody>
+              {visits?.slice(0, 50).map(v => (
+                <tr class="border-t dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700">
+                  <td class="px-4 py-3 font-mono text-xs">{v.ip}</td>
+                  <td class="px-4 py-3">{v.device} · {v.browser}</td>
+                  <td class="px-4 py-3">
+                    <span class="px-2 py-1 bg-primary/20 rounded text-primary font-medium">
+                      {v.collaborator || "Directo"}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3">{v.page}</td>
+                  <td class="px-4 py-3 text-gray-500">
+                    {new Date(v.created_at).toLocaleTimeString()}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </ProtectedPage>
+</Layout>

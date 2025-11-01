@@ -1,20 +1,16 @@
+---
+// src/pages/elmohikano.astro
+const target = new URL('/', Astro.url);
+target.searchParams.set('ref', 'elmohikano');
+---
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <title>Redirigiendo…</title>
-    <script>
-      const collaborator = "elmohikano";
-
-      fetch("/api/count-visit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ collaborator }),
-      }).finally(() => {
-        window.location.href = "/";
-      });
-    </script>
+    <meta http-equiv="refresh" content={`0;url=${target.toString()}`} />
+    <link rel="icon" href="/favicon.svg" />
   </head>
-  <body>
-    <p>Redirigiendo a la web principal…</p>
+  <body class="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+    <p class="text-lg text-gray-700 dark:text-gray-300">Redirigiendo a tu panel privado…</p>
   </body>
 </html>

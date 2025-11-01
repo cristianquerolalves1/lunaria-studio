@@ -1,3 +1,4 @@
+// astro.config.mjs
 import react from '@astrojs/react';
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
@@ -11,8 +12,8 @@ export default defineConfig({
     ? "http://localhost:4321"
     : "https://lunaria-studio.vercel.app",
 
-  output: "server", // necesario para tus APIs
-  adapter: vercel({ runtime: "edge" }), // o serverless
+  output: "server",
+  adapter: vercel({ runtime: "edge" }),
 
   integrations: [
     tailwind(),
@@ -22,5 +23,14 @@ export default defineConfig({
     react({ include: ["./src/components/**/*.{tsx,jsx}"] }),
   ],
 
-  image: {}, // configuración mínima válida para Astro
+  vite: {
+    define: {
+      // Exponer SOLO las contraseñas al cliente (necesario para SolidJS)
+      "import.meta.env.DASHBOARD_PASSWORD": JSON.stringify(process.env.DASHBOARD_PASSWORD),
+      "import.meta.env.ELMOHIKANO_PASSWORD": JSON.stringify(process.env.ELMOHIKANO_PASSWORD),
+    },
+    envPrefix: ['PUBLIC_', 'DASHBOARD_', 'ELMOHIKANO_'], // Permite ambas
+  },
+
+  image: {}
 });
