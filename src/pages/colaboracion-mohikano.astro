@@ -14,10 +14,9 @@ const meta = {
 };
 
 const recursosStreamer = [
-  { tipo: "Overlay de Twitch", desc: "Banners y logos para colocar en tu directo.", enlace: "#" },
+  { tipo: "Overlay de Twitch", desc: "Banners y logos para colocar en tu directo.", enlace: "https://drive.google.com/drive/folders/1hH78TGiCmeIe6t1M-gseFtWxKLNwGnGl?usp=drive_link" },
   { tipo: "Paneles informativos", desc: "Explican la colaboración y el link a la web.", enlace: "#" },
-  { tipo: "Clips y snippets", desc: "Vídeos cortos que puedes compartir durante tu directo.", enlace: "#" },
-  { tipo: "Link directo a la web", desc: "Usa este link personalizado para tus viewers: lunaria-studio.com/elmohikano", enlace: "#" },
+  { tipo: "Link directo a la web", desc: "Usa este link personalizado para tus viewers: lunaria-studio.vercel.app/elmohikano", enlace: "https://lunaria-studio.vercel.app/elmohikano" },
 ];
 
 // Nombre del colaborador para el contador
@@ -29,7 +28,8 @@ const collaborator = "elmohikano";
     <Header />
     <ThemeToggle />
 
-    <main class="flex flex-col md:flex-row container mx-auto px-6 py-16 md:py-24 max-w-7xl gap-8">
+   <main class="flex flex-col md:flex-row container mx-auto px-6 pt-32 md:pt-40 max-w-7xl gap-8">
+
       <!-- Sidebar -->
       <nav class="hidden md:block w-1/4 sticky top-24 self-start">
         <div class="bg-card p-6 rounded-xl border border-border shadow-sm">
@@ -49,10 +49,10 @@ const collaborator = "elmohikano";
       <!-- Contenido principal -->
       <div class="flex-1 space-y-24">
         <!-- Secciones informativas -->
-        <section id="bienvenida" class="prose prose-lg dark:prose-invert max-w-none">
-          <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
-            <span class="text-primary text-3xl">1.</span> Bienvenida Elmohikano
-          </h2>
+       <section id="bienvenida" class="prose prose-lg dark:prose-invert max-w-none">
+  <h2 class="text-3xl font-bold mb-4 flex items-center gap-3 scroll-mt-32">
+    <span class="text-primary text-3xl">1.</span> Bienvenido! Elmohikano
+  </h2>
           <p>¡Hola Elmohikano! Gracias por colaborar con Lunaria Studio. Esta guía te ayudará a sacar el máximo provecho de tu colaboración y mostrar nuestra web a tu audiencia de manera profesional y atractiva.</p>
           <div class="mt-6 p-6 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg">
             <h3 class="font-semibold mb-2">Datos de la colaboración</h3>
